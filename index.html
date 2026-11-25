@@ -242,7 +242,7 @@
           <div class="lg:col-span-7 min-w-0 space-y-5">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/25 text-blue-200 text-xs font-semibold">
               <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-              HireCloud v1.0.0 • Windows x64 &amp; Universal macOS
+              <span>HireCloud <span data-release-version>v1.0.2</span> • Windows x64 &amp; Universal macOS</span>
             </div>
 
             <h1 class="text-3xl sm:text-5xl lg:text-[50px] font-extrabold tracking-[-0.03em] leading-[1.07] text-white">
@@ -315,7 +315,7 @@
                 </div>
                 <div class="card-soft rounded-xl p-3.5">
                   <p class="text-slate-400">Free Inside App</p>
-                  <p class="text-amber-300 font-bold text-sm mt-1">10 Min + 5 Q</p>
+                  <p class="text-amber-300 font-bold text-sm mt-1">5 Min + 10 Q</p>
                 </div>
               </div>
 
@@ -535,7 +535,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="max-w-3xl mx-auto mb-8 sm:mb-10">
           <div class="rounded-2xl sm:rounded-full bg-blue-500/10 border border-blue-400/25 px-4 sm:px-5 py-3 text-center text-xs sm:text-sm text-slate-200 leading-relaxed">
-            Quick Tip: Get <span class="text-amber-300 font-bold">10 Minutes &amp; 5 Questions Free</span> instantly and activate plans directly inside the <span class="text-sky-300 font-bold">HireCloud Desktop App</span>.
+            Quick Tip: Get <span class="text-amber-300 font-bold">5 Minutes &amp; 10 Questions Free</span> instantly and activate plans directly inside the <span class="text-sky-300 font-bold">HireCloud Desktop App</span>.
           </div>
         </div>
 
@@ -679,7 +679,7 @@
     <section id="screen-download" class="screen">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="mono text-xs uppercase tracking-widest text-sky-400">Release v1.0.0 • Stealth Build</p>
+          <p class="mono text-xs uppercase tracking-widest text-sky-400">Release <span data-release-version>v1.0.2</span> • Stealth Build</p>
           <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Download HireCloud Desktop</h2>
           <p class="text-slate-300 mt-2.5 text-sm">
             Select your operating system below to start downloading the installer right away.
@@ -773,7 +773,7 @@
               <span>Where do I buy a plan or booster add-on?</span>
               <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Download and open the HireCloud Desktop App first. You get 10 free minutes and 5 questions to test, and all plans can be activated directly inside the app.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Download and open the HireCloud Desktop App first. You get 5 free minutes and 10 questions to test, and all plans can be activated directly inside the app.</p>
           </details>
 
           <details class="card rounded-xl p-5 group">
@@ -862,8 +862,9 @@
   <script>
     const CFG = {
       whatsapp: '918865078140',
-      winExe: 'https://github.com/hirenovatalent/hirecloud-releases/releases/download/v1.0.0/HireCloud-Setup-1.0.0-win-x64.exe',
-      macDmg: 'https://github.com/hirenovatalent/hirecloud-releases/releases/download/v1.0.0/HireCloud-1.0.0-mac-universal.dmg',
+      releaseRepo: 'hirenovatalent/hirenova_website',
+      winExe: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.2/HireCloud-Setup-1.0.2-win-x64.exe',
+      macDmg: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.2/HireCloud-1.0.2-mac-universal.dmg',
       consoleUrl: 'https://console.groq.com/keys',
       videos: {
         en: { title: 'HireCloud Live Demo (English)', src: './videos/demo-en.mp4' },
@@ -901,6 +902,28 @@
 
     let activeVideoKey = 'en';
     let introTimer = null;
+    let toastTimer = null;
+
+    async function syncLatestRelease() {
+      try {
+        const res = await fetch('https://api.github.com/repos/' + CFG.releaseRepo + '/releases/latest', {
+          headers: { 'Accept': 'application/vnd.github+json' }
+        });
+        if (!res.ok) return;
+        const release = await res.json();
+        const assets = Array.isArray(release.assets) ? release.assets : [];
+        const exeAsset = assets.find(a => a && typeof a.name === 'string' && a.name.toLowerCase().endsWith('.exe'));
+        const dmgAsset = assets.find(a => a && typeof a.name === 'string' && a.name.toLowerCase().endsWith('.dmg'));
+
+        if (exeAsset && exeAsset.browser_download_url) CFG.winExe = exeAsset.browser_download_url;
+        if (dmgAsset && dmgAsset.browser_download_url) CFG.macDmg = dmgAsset.browser_download_url;
+        if (release.tag_name) {
+          document.querySelectorAll('[data-release-version]').forEach(el => {
+            el.textContent = release.tag_name;
+          });
+        }
+      } catch (e) {}
+    }
 
     function dismissIntro() {
       const overlay = document.getElementById('welcomeOverlay');
@@ -994,7 +1017,8 @@
       document.getElementById('toastHead').textContent = head;
       document.getElementById('toastBody').textContent = body;
       box.classList.remove('hidden');
-      setTimeout(() => box.classList.add('hidden'), 4500);
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => box.classList.add('hidden'), 4500);
     }
 
     function startDownload(os) {
@@ -1064,6 +1088,7 @@
     renderBrandWall();
     syncView();
     runWelcomeIntro();
+    syncLatestRelease();
   </script>
 </body>
 </html>
