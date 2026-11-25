@@ -7,40 +7,45 @@
   <link rel="icon" type="image/png" href="./hirenovatalent.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; box-sizing: border-box; }
+    * { font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; box-sizing: border-box; }
     .mono { font-family: 'JetBrains Mono', monospace; }
     html, body {
       max-width: 100%;
-      background-color: #09090b;
-      color: #f4f4f5;
+      background-color: #05070e;
+      color: #f8fafc;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    .page-canvas {
+    .page-glow {
       background-image:
-        radial-gradient(900px 420px at 50% -120px, rgba(59, 130, 246, 0.12), transparent 70%);
+        radial-gradient(920px 480px at 14% -6%, rgba(37, 99, 235, 0.22), transparent 65%),
+        radial-gradient(780px 440px at 88% 4%, rgba(245, 158, 11, 0.14), transparent 62%),
+        radial-gradient(640px 420px at 52% 68%, rgba(16, 185, 129, 0.08), transparent 66%);
     }
-    .box {
-      background-color: #111114;
-      border: 1px solid #222228;
+    .card {
+      background: linear-gradient(180deg, rgba(16, 22, 38, 0.92) 0%, rgba(10, 14, 25, 0.96) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 20px 44px -24px rgba(0, 0, 0, 0.85);
     }
-    .box-soft {
-      background-color: #0c0c0f;
-      border: 1px solid #1d1d22;
+    .card-soft {
+      background: rgba(7, 10, 19, 0.88);
+      border: 1px solid rgba(148, 163, 184, 0.12);
     }
-    .box-hover {
-      transition: border-color 0.2s ease, background-color 0.2s ease;
+    .card-hover {
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
-    .box-hover:hover {
-      border-color: #34343f;
-      background-color: #141418;
+    .card-hover:hover {
+      transform: translateY(-2px);
+      border-color: rgba(96, 165, 250, 0.45);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 24px 48px -20px rgba(37, 99, 235, 0.30);
     }
-    .plan-highlight {
-      background-color: #13131a;
-      border: 1px solid #4f46e5;
+    .plan-popular {
+      background: linear-gradient(180deg, rgba(23, 33, 62, 0.96) 0%, rgba(12, 17, 33, 0.99) 100%);
+      border: 1px solid rgba(99, 102, 241, 0.72);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 26px 56px -22px rgba(79, 70, 229, 0.48);
     }
 
     #welcomeOverlay {
@@ -48,8 +53,9 @@
       inset: 0;
       z-index: 100;
       background:
-        radial-gradient(560px 320px at 50% 45%, rgba(59, 130, 246, 0.14), transparent 70%),
-        #070709;
+        radial-gradient(640px 380px at 50% 42%, rgba(59, 130, 246, 0.22), transparent 68%),
+        radial-gradient(500px 320px at 56% 62%, rgba(245, 158, 11, 0.13), transparent 70%),
+        #04060d;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -79,7 +85,9 @@
       position: relative;
       z-index: 4;
       display: inline-block;
-      color: #ffffff;
+      background: linear-gradient(180deg, #ffffff 0%, #bae6fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       opacity: 0;
       transform: scale(0.76);
       animation: popH 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
@@ -106,7 +114,7 @@
       height: 2px;
       width: 0;
       border-radius: 999px;
-      background: linear-gradient(90deg, #3b82f6, #f59e0b);
+      background: linear-gradient(90deg, #3b82f6, #38bdf8 55%, #f59e0b 100%);
       animation: expandBar 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.1s;
     }
     @keyframes introFadeUp {
@@ -125,12 +133,12 @@
       100% { transform: translateX(0%); opacity: 1; }
     }
     @keyframes expandBar {
-      to { width: 150px; }
+      to { width: 164px; }
     }
 
     .logo-wall {
       position: relative;
-      height: 268px;
+      height: 276px;
       overflow: hidden;
       mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
@@ -156,14 +164,14 @@
       justify-content: center;
       gap: 9px;
       padding: 0 16px;
-      border-radius: 10px;
-      background-color: #111114;
-      border: 1px solid #202026;
+      border-radius: 12px;
+      background: rgba(13, 18, 32, 0.84);
+      border: 1px solid rgba(148, 163, 184, 0.12);
       transition: border-color 0.2s ease, background-color 0.2s ease;
     }
     .brand-tile:hover {
-      border-color: #343440;
-      background-color: #16161b;
+      border-color: rgba(96, 165, 250, 0.38);
+      background: rgba(20, 28, 48, 0.96);
     }
 
     .screen { display: none; animation: fadeScreen 0.18s ease-out; }
@@ -176,77 +184,78 @@
       white-space: nowrap;
     }
     .nav-link.active {
-      background-color: #202026;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.24), rgba(99, 102, 241, 0.18));
+      border: 1px solid rgba(96, 165, 250, 0.34);
       color: #ffffff;
     }
   </style>
 </head>
-<body class="page-canvas min-h-screen flex flex-col overflow-hidden">
+<body class="page-glow min-h-screen flex flex-col overflow-hidden">
 
   <div id="welcomeOverlay" onclick="dismissIntro()">
     <div class="flex flex-col items-center px-6 text-center">
-      <div class="w-12 h-12 p-1 rounded-xl bg-white shadow-lg mb-3.5 intro-kicker flex items-center justify-center overflow-hidden">
+      <div class="w-12 h-12 p-1 rounded-xl bg-white shadow-xl mb-3.5 intro-kicker flex items-center justify-center overflow-hidden">
         <img src="./hirenovatalent.png" alt="HireNovaTalent" onerror="this.parentElement.style.display='none'" class="w-10 h-10 object-contain" />
       </div>
-      <p class="intro-kicker mono text-[10px] sm:text-[11px] uppercase tracking-[0.32em] text-zinc-400 mb-2">Welcome To</p>
+      <p class="intro-kicker mono text-[10px] sm:text-[11px] uppercase tracking-[0.32em] text-sky-300/85 mb-2">Welcome To</p>
       <div class="intro-lockup text-3xl sm:text-5xl md:text-6xl font-extrabold select-none">
-        <span class="intro-h">H</span><span class="intro-mask"><span class="intro-slide"><span class="text-white">ire</span><span class="text-blue-400">Nova</span><span class="text-amber-400">Talent</span></span></span>
+        <span class="intro-h">H</span><span class="intro-mask"><span class="intro-slide"><span class="text-white">ire</span><span class="text-sky-400">Nova</span><span class="text-amber-400">Talent</span></span></span>
       </div>
       <div class="intro-line mt-3.5"></div>
     </div>
   </div>
 
-  <header class="sticky top-0 z-40 border-b border-zinc-800/80 bg-[#09090b]/90 backdrop-blur-md">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-15 sm:h-16 flex items-center justify-between gap-3 py-3">
+  <header class="sticky top-0 z-40 border-b border-slate-800/80 bg-[#05070e]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-15 sm:h-16 flex items-center justify-between gap-3 py-3">
       <a href="#/home" class="flex items-center gap-2.5 shrink-0">
         <div class="w-8 h-8 rounded-lg bg-white p-0.5 flex items-center justify-center overflow-hidden shrink-0">
           <img src="./hirenovatalent.png" alt="HireNovaTalent" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" class="w-full h-full object-contain" />
-          <span class="hidden font-extrabold text-xs text-zinc-900">HN</span>
+          <span class="hidden font-extrabold text-xs text-slate-900">HN</span>
         </div>
         <div class="leading-tight whitespace-nowrap">
-          <span class="font-bold tracking-tight text-sm sm:text-[15px] text-white">Hire<span class="text-blue-400">Nova</span><span class="text-amber-400">Talent</span></span>
-          <span class="block text-[10px] text-zinc-500 font-medium">HireCloud Desktop</span>
+          <span class="font-extrabold tracking-tight text-sm sm:text-[15px] text-white">Hire<span class="text-sky-400">Nova</span><span class="text-amber-400">Talent</span></span>
+          <span class="block text-[10px] text-slate-400 font-medium">HireCloud Desktop</span>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-0.5 bg-[#111114] border border-zinc-800/90 rounded-full p-1 shrink-0">
-        <a href="#/home" data-screen="home" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Home</a>
-        <a href="#/features" data-screen="features" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Features</a>
-        <a href="#/setup-video" data-screen="setup-video" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Setup Video</a>
-        <a href="#/plans" data-screen="plans" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Plans</a>
-        <a href="#/download" data-screen="download" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Download</a>
-        <a href="#/groq-setup" data-screen="groq-setup" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Groq Key</a>
-        <a href="#/support" data-screen="support" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-zinc-400 hover:text-white transition">Support</a>
+      <nav class="hidden lg:flex items-center gap-0.5 bg-slate-900/80 border border-slate-800 rounded-full p-1 shrink-0">
+        <a href="#/home" data-screen="home" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Home</a>
+        <a href="#/features" data-screen="features" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Features</a>
+        <a href="#/setup-video" data-screen="setup-video" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Setup Video</a>
+        <a href="#/plans" data-screen="plans" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Plans</a>
+        <a href="#/download" data-screen="download" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Download</a>
+        <a href="#/groq-setup" data-screen="groq-setup" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Groq Key</a>
+        <a href="#/support" data-screen="support" class="nav-link px-3 py-1.5 rounded-full text-[13px] font-medium text-slate-400 hover:text-white transition">Support</a>
       </nav>
 
       <div class="flex items-center gap-2 shrink-0">
-        <a href="#/download" class="hidden sm:inline-flex items-center gap-1.5 bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-xs sm:text-[13px] px-3.5 py-2 rounded-lg transition whitespace-nowrap">
+        <a href="#/download" class="hidden sm:inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-semibold text-xs sm:text-[13px] px-3.5 py-2 rounded-lg shadow-lg shadow-blue-950/50 transition whitespace-nowrap">
           <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
           Download
         </a>
-        <button id="menuBtn" aria-label="Menu" class="lg:hidden p-2 rounded-lg border border-zinc-800 text-zinc-200 hover:text-white hover:bg-zinc-900 transition">
+        <button id="menuBtn" aria-label="Menu" class="lg:hidden p-2 rounded-lg border border-slate-800 text-slate-200 hover:text-white hover:bg-slate-900 transition">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
 
-    <div id="mobileDrawer" class="hidden lg:hidden border-t border-zinc-800 bg-[#0d0d10] px-4 py-3 space-y-1">
-      <a href="#/home" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Home</a>
-      <a href="#/features" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Features</a>
-      <a href="#/setup-video" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Setup Video</a>
-      <a href="#/plans" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Plans</a>
-      <a href="#/download" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Download</a>
-      <a href="#/groq-setup" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Groq Key</a>
-      <a href="#/support" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-zinc-200 hover:bg-zinc-900">Support</a>
+    <div id="mobileDrawer" class="hidden lg:hidden border-t border-slate-800 bg-[#090c16] px-4 py-3 space-y-1">
+      <a href="#/home" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Home</a>
+      <a href="#/features" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Features</a>
+      <a href="#/setup-video" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Setup Video</a>
+      <a href="#/plans" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Plans</a>
+      <a href="#/download" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Download</a>
+      <a href="#/groq-setup" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Groq Key</a>
+      <a href="#/support" class="block px-3.5 py-2.5 rounded-lg text-sm font-medium text-slate-200 hover:bg-white/5">Support</a>
     </div>
   </header>
 
-  <div id="statusToast" class="fixed top-16 sm:top-20 right-3 sm:right-4 z-50 hidden w-[calc(100vw-1.5rem)] max-w-sm box border-emerald-500/40 rounded-xl px-4 py-3 shadow-2xl">
+  <div id="statusToast" class="fixed top-16 sm:top-20 right-3 sm:right-4 z-50 hidden w-[calc(100vw-1.5rem)] max-w-sm card border-emerald-500/40 rounded-xl px-4 py-3 shadow-2xl">
     <div class="flex items-start gap-3">
       <span class="mt-1.5 w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
       <div class="min-w-0">
         <p id="toastHead" class="text-sm font-semibold text-white"></p>
-        <p id="toastBody" class="text-xs text-zinc-400 mt-0.5"></p>
+        <p id="toastBody" class="text-xs text-slate-300 mt-0.5"></p>
       </div>
     </div>
   </div>
@@ -254,54 +263,118 @@
   <main class="flex-1">
 
     <section id="screen-home" class="screen">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-12 sm:pt-16 pb-16">
-        <div class="max-w-3xl mx-auto text-center">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 text-xs font-medium mb-6">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            HireCloud v1.0.0 • Windows x64 &amp; Universal macOS
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-16">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+
+          <div class="lg:col-span-7 min-w-0 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/25 text-blue-200 text-xs font-semibold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+              HireCloud v1.0.0 • Windows x64 &amp; Universal macOS
+            </div>
+
+            <h1 class="text-3xl sm:text-5xl lg:text-[50px] font-extrabold tracking-[-0.03em] leading-[1.07] text-white">
+              Crack SDE Rounds with
+              <span class="bg-gradient-to-r from-sky-400 via-blue-400 to-amber-300 bg-clip-text text-transparent">Silent Precision</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              HireCloud runs directly at your operating system layer with a neutral system gear icon. Stream clean solutions, live voice notes, and system design pointers right on your display while staying completely hidden on screen share.
+            </p>
+
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-400/25 text-xs font-medium text-emerald-300">Screen Share Excluded</span>
+              <span class="px-2.5 py-1 rounded-lg bg-sky-500/10 border border-sky-400/25 text-xs font-medium text-sky-300">System Gear Icon</span>
+              <span class="px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-400/25 text-xs font-medium text-amber-300">Hidden in Taskbar &amp; Dock</span>
+              <span class="px-2.5 py-1 rounded-lg bg-indigo-500/10 border border-indigo-400/25 text-xs font-medium text-indigo-300">Zero Tab Switching</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-1">
+              <a href="#/download" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-bold text-sm px-5 py-3 rounded-xl shadow-xl shadow-blue-950/60 transition">
+                <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+                Download HireCloud
+              </a>
+              <a href="#/plans" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 card card-hover px-5 py-3 rounded-xl font-semibold text-sm text-slate-100">
+                View Plans
+              </a>
+              <a href="#/setup-video" class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1 px-3 py-3 rounded-xl font-semibold text-sm text-amber-300 hover:text-amber-200 transition whitespace-nowrap">
+                Setup Videos →
+              </a>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 sm:gap-6 pt-5 border-t border-slate-800/80 max-w-md">
+              <div>
+                <p class="text-xl sm:text-2xl font-extrabold text-white">98.4%</p>
+                <p class="text-xs text-slate-400 mt-0.5">Success Rate</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-extrabold text-sky-400">&lt; 300ms</p>
+                <p class="text-xs text-slate-400 mt-0.5">Response Speed</p>
+              </div>
+              <div>
+                <p class="text-xl sm:text-2xl font-extrabold text-amber-400">15,000+</p>
+                <p class="text-xs text-slate-400 mt-0.5">Rounds Cleared</p>
+              </div>
+            </div>
           </div>
 
-          <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-extrabold tracking-[-0.03em] leading-[1.08] text-white">
-            Silent Desktop Assistant for
-            <span class="text-blue-400">Technical Interviews</span>
-          </h1>
+          <div class="lg:col-span-5 min-w-0">
+            <div class="card rounded-2xl p-5 sm:p-6 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-800 pb-3.5">
+                <div>
+                  <p class="mono text-[10px] uppercase tracking-widest text-sky-400">Desktop Overview</p>
+                  <h2 class="text-base font-bold text-white mt-0.5">HireCloud Stealth Spec</h2>
+                </div>
+                <span class="mono text-[10px] px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 font-semibold">STEALTH READY</span>
+              </div>
 
-          <p class="text-zinc-400 text-sm sm:text-lg leading-relaxed mt-5 max-w-2xl mx-auto">
-            HireCloud runs natively on Windows and macOS with a standard system gear icon. Get structured coding answers, voice transcription, and system design pointers right on your screen—completely hidden on screen share.
-          </p>
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                <div class="card-soft rounded-xl p-3.5">
+                  <p class="text-slate-400">Screen Capture</p>
+                  <p class="text-emerald-400 font-bold text-sm mt-1">Excluded</p>
+                </div>
+                <div class="card-soft rounded-xl p-3.5">
+                  <p class="text-slate-400">Desktop Shortcut</p>
+                  <p class="text-sky-300 font-bold text-sm mt-1">System Gear</p>
+                </div>
+                <div class="card-soft rounded-xl p-3.5">
+                  <p class="text-slate-400">Taskbar / Dock</p>
+                  <p class="text-emerald-400 font-bold text-sm mt-1">Hidden</p>
+                </div>
+                <div class="card-soft rounded-xl p-3.5">
+                  <p class="text-slate-400">Free Inside App</p>
+                  <p class="text-amber-300 font-bold text-sm mt-1">10 Min + 5 Q</p>
+                </div>
+              </div>
 
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
-            <a href="#/download" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm px-6 py-3.5 rounded-xl transition">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
-              Download HireCloud
-            </a>
-            <a href="#/plans" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 box box-hover px-6 py-3.5 rounded-xl font-semibold text-sm text-zinc-100">
-              View Plans
-            </a>
-            <a href="#/setup-video" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3.5 rounded-xl font-medium text-sm text-zinc-300 hover:text-white transition">
-              Watch Setup Videos →
-            </a>
-          </div>
+              <div class="card-soft rounded-xl p-4 space-y-2 text-xs">
+                <div class="flex items-center justify-between text-slate-300">
+                  <span>Windows 10 / 11 (x64)</span>
+                  <span class="mono text-sky-400 font-semibold">.EXE</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-300">
+                  <span>macOS (M1–M4 + Intel)</span>
+                  <span class="mono text-amber-300 font-semibold">.DMG</span>
+                </div>
+                <div class="flex items-center justify-between text-slate-300">
+                  <span>Key Setup</span>
+                  <span class="mono text-emerald-400 font-semibold">Groq Console</span>
+                </div>
+              </div>
 
-          <div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 pt-8 border-t border-zinc-800/80">
-            <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white">98.4%</p>
-              <p class="text-xs text-zinc-500 mt-1">Success Rate</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white">&lt; 300ms</p>
-              <p class="text-xs text-zinc-500 mt-1">Response Time</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white">15,000+</p>
-              <p class="text-xs text-zinc-500 mt-1">Rounds Cleared</p>
+              <div class="flex items-center justify-between pt-1 text-xs">
+                <span class="text-slate-400">Need help setting up?</span>
+                <button onclick="openWa('Hi HireNovaTalent Support, I need help with HireCloud setup.')" class="font-semibold text-emerald-400 hover:text-emerald-300 transition">
+                  Chat on WhatsApp →
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="mt-20 pt-12 border-t border-zinc-800/80">
-          <div class="text-center max-w-xl mx-auto mb-8">
-            <p class="mono text-[11px] tracking-[0.22em] uppercase text-zinc-500">Candidates Cleared SDE Rounds At</p>
+        <div class="mt-16 sm:mt-20 pt-10 border-t border-slate-800/80">
+          <div class="text-center max-w-xl mx-auto mb-7">
+            <p class="text-[11px] mono tracking-[0.24em] uppercase text-sky-400">Proven Track Record</p>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mt-2">Candidates Cleared SDE Rounds At</h2>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 max-w-5xl mx-auto">
@@ -317,69 +390,78 @@
           </div>
         </div>
 
-        <div class="mt-20 pt-12 border-t border-zinc-800/80">
+        <div class="mt-16 sm:mt-20 pt-12 border-t border-slate-800/80">
           <div class="max-w-2xl">
-            <p class="mono text-[11px] tracking-[0.2em] uppercase text-blue-400">How It Works</p>
-            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white mt-2">Built Natively for Screen-Share Safety</h2>
-            <p class="text-zinc-400 text-sm sm:text-base mt-2.5 leading-relaxed">
-              Unlike browser extensions that trigger tab-switch flags or show up on shared windows, HireCloud operates directly at the desktop layer.
+            <p class="mono text-[11px] tracking-[0.22em] uppercase text-amber-400">Engineered for SDE Rounds</p>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mt-2">Technical Problem Solving Architecture</h2>
+            <p class="text-slate-300 text-sm sm:text-base mt-2.5 leading-relaxed">
+              Built directly on top of Windows and macOS display compositors instead of browser plugins. Fast, quiet, and visually invisible on shared screens.
             </p>
           </div>
 
           <div class="grid md:grid-cols-3 gap-4 sm:gap-5 mt-8">
-            <div class="box box-hover rounded-xl p-6">
-              <span class="mono text-xs text-zinc-500">01</span>
-              <h3 class="text-base font-semibold text-white mt-3">Excluded from Screen Share</h3>
-              <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Uses native Windows and macOS window-exclusion flags so Zoom, Google Meet, Microsoft Teams, and Webex never capture the window.</p>
+            <div class="card card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-emerald-400/75">
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="mono text-xs text-slate-400">LAYER 01</span>
+                <span class="mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300">OS COMPOSITOR</span>
+              </div>
+              <h3 class="text-base font-bold text-white">Content-Protected Overlay</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">Registers native OS window-exclusion flags so full-screen sharing on Zoom, Google Meet, Microsoft Teams, and Webex never captures the overlay.</p>
             </div>
 
-            <div class="box box-hover rounded-xl p-6">
-              <span class="mono text-xs text-zinc-500">02</span>
-              <h3 class="text-base font-semibold text-white mt-3">Neutral System Gear Icon</h3>
-              <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Installs cleanly on your desktop as HireCloud with a plain system utility icon—zero AI branding or suspicious labels.</p>
+            <div class="card card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-sky-400/75">
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="mono text-xs text-slate-400">LAYER 02</span>
+                <span class="mono text-[10px] px-2 py-0.5 rounded bg-sky-500/15 text-sky-300">DUAL CAPTURE</span>
+              </div>
+              <h3 class="text-base font-bold text-white">Screen Text + Live Voice</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">Extracts coding statements, constraints, and examples directly from your screen while capturing spoken follow-up questions in real time.</p>
             </div>
 
-            <div class="box box-hover rounded-xl p-6">
-              <span class="mono text-xs text-zinc-500">03</span>
-              <h3 class="text-base font-semibold text-white mt-3">Direct Groq API Speed</h3>
-              <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Connects straight through your free Groq API key for fast code output, dry-run steps, edge cases, and complexity breakdowns.</p>
+            <div class="card card-hover rounded-2xl p-5 sm:p-6 border-t-2 border-t-amber-400/75">
+              <div class="flex items-center justify-between mb-3.5">
+                <span class="mono text-xs text-slate-400">LAYER 03</span>
+                <span class="mono text-[10px] px-2 py-0.5 rounded bg-amber-500/15 text-amber-300">GROQ KEY</span>
+              </div>
+              <h3 class="text-base font-bold text-white">Sub-300ms Streaming</h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">Connects straight through your personal Groq API key for structured solutions, dry-run steps, edge cases, and complexity analysis.</p>
             </div>
           </div>
 
-          <div class="mt-6 box rounded-xl overflow-hidden">
-            <div class="px-5 py-3.5 border-b border-zinc-800 bg-[#0d0d10] flex items-center justify-between gap-2">
-              <h3 class="text-xs sm:text-sm font-semibold text-white">Browser Extensions vs HireCloud Native</h3>
-              <span class="mono text-[10px] sm:text-[11px] text-zinc-500">COMPARISON</span>
+          <div class="mt-6 card rounded-2xl overflow-hidden">
+            <div class="px-4 sm:px-6 py-3.5 border-b border-slate-800 bg-slate-950/75 flex items-center justify-between gap-2">
+              <h3 class="text-xs sm:text-sm font-bold text-white">Why Native Desktop Beats Browser Extensions</h3>
+              <span class="mono text-[10px] sm:text-[11px] text-sky-400 shrink-0">COMPARISON</span>
             </div>
             <div class="overflow-x-auto">
               <table class="w-full text-left text-xs sm:text-sm min-w-[520px]">
-                <thead class="border-b border-zinc-800 text-zinc-500 mono text-[11px] uppercase">
+                <thead class="border-b border-slate-800 text-slate-400 mono text-[11px] uppercase">
                   <tr>
-                    <th class="px-5 py-3 font-medium">Capability</th>
-                    <th class="px-5 py-3 font-medium">Browser Extensions</th>
-                    <th class="px-5 py-3 font-semibold text-white">HireCloud Desktop</th>
+                    <th class="px-4 sm:px-6 py-3 font-medium">Capability</th>
+                    <th class="px-4 sm:px-6 py-3 font-medium">Browser Extensions</th>
+                    <th class="px-4 sm:px-6 py-3 font-semibold text-white">HireCloud Native Client</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-zinc-800/70 text-zinc-300">
+                <tbody class="divide-y divide-slate-800/70 text-slate-300">
                   <tr>
-                    <td class="px-5 py-3 text-zinc-400">Full-Screen Share Visibility</td>
-                    <td class="px-5 py-3 text-zinc-500">Visible on share</td>
-                    <td class="px-5 py-3 text-emerald-400 font-medium">Hidden by OS compositor</td>
+                    <td class="px-4 sm:px-6 py-3 text-slate-400">Full-Screen Share Visibility</td>
+                    <td class="px-4 sm:px-6 py-3 text-rose-400/90">Visible on screen share</td>
+                    <td class="px-4 sm:px-6 py-3 text-emerald-400 font-semibold">Excluded at OS compositor level</td>
                   </tr>
                   <tr>
-                    <td class="px-5 py-3 text-zinc-400">Tab Focus &amp; Proctoring</td>
-                    <td class="px-5 py-3 text-zinc-500">Triggers tab-switch alerts</td>
-                    <td class="px-5 py-3 text-emerald-400 font-medium">Runs outside browser</td>
+                    <td class="px-4 sm:px-6 py-3 text-slate-400">Tab Focus &amp; Proctoring</td>
+                    <td class="px-4 sm:px-6 py-3 text-rose-400/90">Triggers tab-switch events</td>
+                    <td class="px-4 sm:px-6 py-3 text-emerald-400 font-semibold">Runs outside browser sandbox</td>
                   </tr>
                   <tr>
-                    <td class="px-5 py-3 text-zinc-400">Desktop &amp; App Identity</td>
-                    <td class="px-5 py-3 text-zinc-500">Visible toolbar icon</td>
-                    <td class="px-5 py-3 text-emerald-400 font-medium">Neutral system gear icon</td>
+                    <td class="px-4 sm:px-6 py-3 text-slate-400">Desktop &amp; App Identity</td>
+                    <td class="px-4 sm:px-6 py-3 text-rose-400/90">Visible toolbar icon</td>
+                    <td class="px-4 sm:px-6 py-3 text-emerald-400 font-semibold">Neutral system gear icon</td>
                   </tr>
                   <tr>
-                    <td class="px-5 py-3 text-zinc-400">macOS Silicon + Intel</td>
-                    <td class="px-5 py-3 text-zinc-500">Browser-only limits</td>
-                    <td class="px-5 py-3 text-emerald-400 font-medium">Single Universal DMG</td>
+                    <td class="px-4 sm:px-6 py-3 text-slate-400">macOS Silicon + Intel</td>
+                    <td class="px-4 sm:px-6 py-3 text-rose-400/90">Browser-only limitations</td>
+                    <td class="px-4 sm:px-6 py-3 text-emerald-400 font-semibold">Single Universal macOS DMG</td>
                   </tr>
                 </tbody>
               </table>
@@ -390,110 +472,110 @@
     </section>
 
     <section id="screen-features" class="screen">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="max-w-2xl">
-          <p class="mono text-xs uppercase tracking-widest text-blue-400">Features</p>
-          <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-2">Built for Zero Footprint</h2>
-          <p class="text-zinc-400 mt-2.5 text-sm sm:text-base">Every interaction happens at the desktop layer so your browser, editor, and call window stay untouched.</p>
+          <p class="mono text-xs uppercase tracking-widest text-sky-400">Core Capabilities</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Built for Complete Discretion</h2>
+          <p class="text-slate-300 mt-2.5 text-sm sm:text-base">Every interaction runs natively at the desktop level so your browser, IDE, and video call remain untouched.</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mt-8">
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">01</span>
-            <h3 class="text-base font-semibold text-white mt-3">OS-Level Screen Exclusion</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Window content protection keeps the overlay hidden from Zoom, Meet, Teams, and screen recorders.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 mono text-xs font-bold items-center justify-center mb-3.5">01</span>
+            <h3 class="text-base font-bold text-white">OS-Level Screen Exclusion</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Window content protection hides the overlay from full-screen sharing on Zoom, Meet, Teams, and screen recorders.</p>
           </div>
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">02</span>
-            <h3 class="text-base font-semibold text-white mt-3">Stealth System Identity</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Installs as <span class="mono text-zinc-200">HireCloud</span> with a clean system gear icon so nothing looks out of place.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-sky-500/15 border border-sky-400/30 text-sky-300 mono text-xs font-bold items-center justify-center mb-3.5">02</span>
+            <h3 class="text-base font-bold text-white">Stealth System Identity</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Installs as <span class="mono text-sky-300">HireCloud</span> with a clean system gear icon so nothing looks suspicious on your desktop.</p>
           </div>
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">03</span>
-            <h3 class="text-base font-semibold text-white mt-3">Direct Groq Inference</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Uses your personal Groq API key for fast responses, clean code, and complexity analysis.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-amber-500/15 border border-amber-400/30 text-amber-300 mono text-xs font-bold items-center justify-center mb-3.5">03</span>
+            <h3 class="text-base font-bold text-white">Direct Groq Key Speed</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Uses your personal Groq API key for fast responses, clean implementations, and complexity trade-offs.</p>
           </div>
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">04</span>
-            <h3 class="text-base font-semibold text-white mt-3">OCR &amp; Voice Capture</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Capture coding prompts from screen or transcribe live spoken questions via silent hotkeys.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-indigo-500/15 border border-indigo-400/30 text-indigo-300 mono text-xs font-bold items-center justify-center mb-3.5">04</span>
+            <h3 class="text-base font-bold text-white">Screen Text + Voice Capture</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Grab coding problems from screen or capture live spoken questions via silent keyboard hotkeys.</p>
           </div>
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">05</span>
-            <h3 class="text-base font-semibold text-white mt-3">Zero Tab Switching</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Always-on-top translucent window keeps your eyes aligned with your camera and editor.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-rose-500/15 border border-rose-400/30 text-rose-300 mono text-xs font-bold items-center justify-center mb-3.5">05</span>
+            <h3 class="text-base font-bold text-white">Zero Tab Switching</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Always-on-top translucent window keeps your eyes aligned with your camera and editor.</p>
           </div>
-          <div class="box box-hover rounded-xl p-6">
-            <span class="mono text-xs text-zinc-500">06</span>
-            <h3 class="text-base font-semibold text-white mt-3">Windows &amp; Universal Mac</h3>
-            <p class="text-sm text-zinc-400 mt-2 leading-relaxed">Windows x64 installer plus a single universal macOS DMG for M1, M2, M3, M4, and Intel Macs.</p>
+          <div class="card card-hover rounded-2xl p-5 sm:p-6">
+            <span class="inline-flex w-9 h-9 rounded-lg bg-teal-500/15 border border-teal-400/30 text-teal-300 mono text-xs font-bold items-center justify-center mb-3.5">06</span>
+            <h3 class="text-base font-bold text-white">Windows &amp; Universal Mac</h3>
+            <p class="text-sm text-slate-300 mt-2 leading-relaxed">Dedicated Windows x64 installer plus a single universal macOS DMG for M1, M2, M3, M4, and Intel Macs.</p>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-setup-video" class="screen">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-7">
           <div>
-            <p class="mono text-xs uppercase tracking-widest text-blue-400">Walkthroughs</p>
-            <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-2">Demo &amp; Setup Videos</h2>
-            <p class="text-zinc-400 mt-2 text-sm">Choose English Demo, Hindi Demo, or the full Download &amp; Setup walkthrough.</p>
+            <p class="mono text-xs uppercase tracking-widest text-amber-400">Video Walkthroughs</p>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Demo &amp; Full Setup Videos</h2>
+            <p class="text-slate-300 mt-2 text-sm">Switch cleanly between English Demo, Hindi Demo, and the complete Download &amp; Setup guide.</p>
           </div>
 
-          <div class="inline-flex flex-wrap items-center bg-[#111114] border border-zinc-800 rounded-xl p-1 text-xs self-start gap-1">
-            <button id="tabEn" onclick="selectVideo('en')" class="px-3 py-2 rounded-lg font-semibold bg-white text-zinc-950 transition whitespace-nowrap">English Demo</button>
-            <button id="tabHi" onclick="selectVideo('hi')" class="px-3 py-2 rounded-lg font-semibold text-zinc-400 hover:text-white transition whitespace-nowrap">Hindi Demo</button>
-            <button id="tabSetup" onclick="selectVideo('setup')" class="px-3 py-2 rounded-lg font-semibold text-zinc-400 hover:text-white transition whitespace-nowrap">Download &amp; Setup</button>
+          <div class="inline-flex flex-wrap items-center bg-slate-900/90 border border-slate-800 rounded-xl p-1 text-xs self-start gap-1">
+            <button id="tabEn" onclick="selectVideo('en')" class="px-3 py-2 rounded-lg font-semibold bg-blue-500 text-white transition whitespace-nowrap">English Demo</button>
+            <button id="tabHi" onclick="selectVideo('hi')" class="px-3 py-2 rounded-lg font-semibold text-slate-400 hover:text-white transition whitespace-nowrap">Hindi Demo</button>
+            <button id="tabSetup" onclick="selectVideo('setup')" class="px-3 py-2 rounded-lg font-semibold text-slate-400 hover:text-white transition whitespace-nowrap">Download &amp; Setup</button>
           </div>
         </div>
 
-        <div class="box rounded-2xl overflow-hidden">
-          <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-800 bg-[#0d0d10] gap-2">
+        <div class="card rounded-2xl overflow-hidden">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-slate-800 bg-slate-950/80 gap-2">
             <span id="videoHeading" class="text-xs font-semibold text-white truncate">HireCloud Live Demo (English)</span>
-            <span class="mono text-[10px] sm:text-[11px] text-zinc-500 shrink-0">HD</span>
+            <span class="mono text-[10px] sm:text-[11px] text-emerald-400 shrink-0">HD • Fast Stream</span>
           </div>
-          <div id="videoStage" class="relative aspect-video bg-black flex items-center justify-center"></div>
+          <div id="videoStage" class="relative aspect-video bg-[#04060c] flex items-center justify-center"></div>
         </div>
 
-        <div class="grid sm:grid-cols-3 gap-4 mt-5">
-          <button onclick="selectVideo('en')" class="box box-hover rounded-xl p-4 text-left">
-            <p class="mono text-[11px] text-zinc-500">VIDEO 01</p>
-            <p class="text-sm font-semibold text-white mt-1">English Live Demo</p>
-            <p class="text-xs text-zinc-400 mt-1">Full walkthrough of live coding and stealth overlay in English.</p>
+        <div class="grid sm:grid-cols-3 gap-3.5 sm:gap-4 mt-5">
+          <button onclick="selectVideo('en')" class="card card-hover rounded-xl p-4 text-left">
+            <p class="mono text-[11px] text-sky-400">VIDEO 01</p>
+            <p class="text-sm font-bold text-white mt-1">English Live Demo</p>
+            <p class="text-xs text-slate-400 mt-1">Complete walkthrough of live coding and stealth overlay in English.</p>
           </button>
-          <button onclick="selectVideo('hi')" class="box box-hover rounded-xl p-4 text-left">
-            <p class="mono text-[11px] text-zinc-500">VIDEO 02</p>
-            <p class="text-sm font-semibold text-white mt-1">Hindi Live Demo</p>
-            <p class="text-xs text-zinc-400 mt-1">Complete live demonstration explained clearly in Hindi.</p>
+          <button onclick="selectVideo('hi')" class="card card-hover rounded-xl p-4 text-left">
+            <p class="mono text-[11px] text-amber-400">VIDEO 02</p>
+            <p class="text-sm font-bold text-white mt-1">Hindi Live Demo</p>
+            <p class="text-xs text-slate-400 mt-1">Full live demonstration explained clearly in Hindi.</p>
           </button>
-          <button onclick="selectVideo('setup')" class="box box-hover rounded-xl p-4 text-left">
-            <p class="mono text-[11px] text-zinc-500">VIDEO 03</p>
-            <p class="text-sm font-semibold text-white mt-1">Download &amp; Full Setup</p>
-            <p class="text-xs text-zinc-400 mt-1">Step-by-step install, Groq API key creation, and first launch.</p>
+          <button onclick="selectVideo('setup')" class="card card-hover rounded-xl p-4 text-left">
+            <p class="mono text-[11px] text-emerald-400">VIDEO 03</p>
+            <p class="text-sm font-bold text-white mt-1">Download &amp; Full Setup</p>
+            <p class="text-xs text-slate-400 mt-1">Step-by-step install, Groq API key creation, and first run.</p>
           </button>
         </div>
       </div>
     </section>
 
     <section id="screen-plans" class="screen">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div class="max-w-3xl mx-auto mb-9">
-          <div class="rounded-2xl sm:rounded-full bg-[#111114] border border-zinc-800 px-4 sm:px-5 py-3 text-center text-xs sm:text-sm text-zinc-300 leading-relaxed">
-            Quick Tip: Get <span class="text-white font-semibold">10 Minutes &amp; 5 Questions Free</span> instantly and activate plans directly inside the <span class="text-blue-400 font-semibold">HireCloud Desktop App</span>.
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div class="max-w-3xl mx-auto mb-8 sm:mb-10">
+          <div class="rounded-2xl sm:rounded-full bg-blue-500/10 border border-blue-400/25 px-4 sm:px-5 py-3 text-center text-xs sm:text-sm text-slate-200 leading-relaxed">
+            Quick Tip: Get <span class="text-amber-300 font-bold">10 Minutes &amp; 5 Questions Free</span> instantly and activate plans directly inside the <span class="text-sky-300 font-bold">HireCloud Desktop App</span>.
           </div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5">
-          <div class="box rounded-2xl p-6 sm:p-7">
+          <div class="card rounded-2xl p-6 sm:p-7 border-t-2 border-t-slate-500/60">
             <h3 class="text-lg font-bold text-white">1 Hour (60 Min | 10 Q)</h3>
             <div class="mt-3.5 flex items-baseline gap-2">
               <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">₹1,179</span>
-              <span class="text-xs text-zinc-500">One-Time</span>
+              <span class="text-xs text-slate-400">One-Time</span>
             </div>
             <p class="text-xs text-emerald-400 font-medium mt-1.5">Final Price • All Taxes Included</p>
-            <p class="text-xs text-zinc-400 mt-3.5 leading-relaxed">Best for quick HR screenings and short technical rounds.</p>
-            <ul class="mt-5 space-y-2.5 text-[13px] text-zinc-300 border-t border-zinc-800 pt-5">
+            <p class="text-xs text-slate-400 mt-3.5 leading-relaxed">Best for quick HR screenings and short technical rounds.</p>
+            <ul class="mt-5 space-y-2.5 text-[13px] text-slate-200 border-t border-slate-800 pt-5">
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> 60 minutes access</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> One-Time Purchase • Lifetime Validity</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Up to 10 assisted questions</li>
@@ -504,15 +586,15 @@
             </ul>
           </div>
 
-          <div class="box rounded-2xl p-6 sm:p-7">
+          <div class="card rounded-2xl p-6 sm:p-7 border-t-2 border-t-sky-400/75">
             <h3 class="text-lg font-bold text-white">2 Hours (120 Min | 20 Q)</h3>
             <div class="mt-3.5 flex items-baseline gap-2">
               <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">₹2,123</span>
-              <span class="text-xs text-zinc-500">One-Time</span>
+              <span class="text-xs text-slate-400">One-Time</span>
             </div>
             <p class="text-xs text-emerald-400 font-medium mt-1.5">Final Price • All Taxes Included</p>
-            <p class="text-xs text-zinc-400 mt-3.5 leading-relaxed">Medium-length interviews across multiple technical rounds.</p>
-            <ul class="mt-5 space-y-2.5 text-[13px] text-zinc-300 border-t border-zinc-800 pt-5">
+            <p class="text-xs text-slate-400 mt-3.5 leading-relaxed">Medium-length interviews across multiple technical rounds.</p>
+            <ul class="mt-5 space-y-2.5 text-[13px] text-slate-200 border-t border-slate-800 pt-5">
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> 120 minutes access</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> One-Time Purchase • Lifetime Validity</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Up to 20 assisted questions</li>
@@ -523,21 +605,21 @@
             </ul>
           </div>
 
-          <div class="plan-highlight rounded-2xl p-6 sm:p-7 relative">
-            <span class="absolute -top-3 right-5 bg-indigo-600 text-white text-[10px] font-bold tracking-wider uppercase px-3 py-1 rounded-full">Most Popular</span>
+          <div class="plan-popular rounded-2xl p-6 sm:p-7 relative">
+            <span class="absolute -top-3 right-5 bg-gradient-to-r from-amber-400 to-orange-500 text-black text-[10px] font-extrabold tracking-wider uppercase px-3 py-1 rounded-full shadow">Most Popular</span>
             <h3 class="text-lg font-bold text-white">3 Hours (180 Min | 30 Q)</h3>
             <div class="mt-3.5 flex items-baseline gap-2">
               <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">₹2,713</span>
-              <span class="text-xs text-zinc-400">One-Time</span>
+              <span class="text-xs text-slate-300">One-Time</span>
             </div>
             <p class="text-xs text-emerald-400 font-medium mt-1.5">Final Price • All Taxes Included</p>
-            <p class="text-xs text-zinc-300 mt-3.5 leading-relaxed">Full interview day coverage with complete desktop tools.</p>
-            <ul class="mt-5 space-y-2.5 text-[13px] text-zinc-200 border-t border-zinc-800 pt-5">
+            <p class="text-xs text-slate-300 mt-3.5 leading-relaxed">Full interview day coverage with complete desktop tools.</p>
+            <ul class="mt-5 space-y-2.5 text-[13px] text-slate-100 border-t border-indigo-400/20 pt-5">
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> 180 minutes access</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> One-Time Purchase • Lifetime Validity</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Up to 30 assisted questions</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Complete feature access</li>
-              <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> OCR + voice assistance</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Screen + voice assistance</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Priority response processing</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Session history &amp; analytics</li>
             </ul>
@@ -545,15 +627,15 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-5 mt-5 max-w-4xl mx-auto">
-          <div class="box rounded-2xl p-6 sm:p-7">
+          <div class="card rounded-2xl p-6 sm:p-7 border-t-2 border-t-teal-400/75">
             <h3 class="text-lg font-bold text-white">5 Hours (300 Min | 50 Q)</h3>
             <div class="mt-3.5 flex items-baseline gap-2">
               <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">₹3,539</span>
-              <span class="text-xs text-zinc-500">One-Time</span>
+              <span class="text-xs text-slate-400">One-Time</span>
             </div>
             <p class="text-xs text-emerald-400 font-medium mt-1.5">Final Price • All Taxes Included</p>
-            <p class="text-xs text-zinc-400 mt-3.5 leading-relaxed">Multiple rounds across a full technical interview loop.</p>
-            <ul class="mt-5 space-y-2.5 text-[13px] text-zinc-300 border-t border-zinc-800 pt-5">
+            <p class="text-xs text-slate-400 mt-3.5 leading-relaxed">Multiple rounds across a full technical interview loop.</p>
+            <ul class="mt-5 space-y-2.5 text-[13px] text-slate-200 border-t border-slate-800 pt-5">
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> 300 minutes access</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> One-Time Purchase • Lifetime Validity</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Up to 50 assisted questions</li>
@@ -564,116 +646,122 @@
             </ul>
           </div>
 
-          <div class="box rounded-2xl p-6 sm:p-7">
+          <div class="card rounded-2xl p-6 sm:p-7 border-t-2 border-t-amber-400/80">
             <h3 class="text-lg font-bold text-white">Monthly (Unlimited Min | Unlimited Q)</h3>
             <div class="mt-3.5 flex items-baseline gap-2">
               <span class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">₹9,439</span>
-              <span class="text-xs text-zinc-500">Monthly</span>
+              <span class="text-xs text-slate-400">Monthly</span>
             </div>
             <p class="text-xs text-emerald-400 font-medium mt-1.5">Final Price • All Taxes Included</p>
-            <p class="text-xs text-zinc-400 mt-3.5 leading-relaxed">Unlimited coverage for active job seekers and placement season.</p>
-            <ul class="mt-5 space-y-2.5 text-[13px] text-zinc-300 border-t border-zinc-800 pt-5">
+            <p class="text-xs text-slate-400 mt-3.5 leading-relaxed">Unlimited coverage for active job seekers and placement season.</p>
+            <ul class="mt-5 space-y-2.5 text-[13px] text-slate-200 border-t border-slate-800 pt-5">
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Unlimited interview minutes</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Full 30-day active validity</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Unlimited assisted questions</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Complete feature access</li>
-              <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> OCR + voice assistance</li>
+              <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Screen + voice assistance</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> All advanced interview tools</li>
               <li class="flex items-center gap-2.5"><span class="text-emerald-400">✓</span> Priority support</li>
             </ul>
           </div>
         </div>
 
-        <div class="mt-14 pt-10 border-t border-zinc-800/80">
+        <div class="mt-14 pt-10 border-t border-slate-800/80">
           <div class="text-center max-w-xl mx-auto mb-7">
-            <h3 class="text-2xl font-bold tracking-tight text-white">Booster Add-On Packs</h3>
-            <p class="text-sm text-zinc-400 mt-1.5">Need extra question credits? Booster packs add questions directly to your active license inside the desktop app.</p>
+            <h3 class="text-2xl font-extrabold tracking-tight text-white">Booster Add-On Packs</h3>
+            <p class="text-sm text-slate-400 mt-1.5">Need extra question credits? Booster packs add questions directly to your active license inside the desktop app.</p>
           </div>
 
           <div class="grid sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
-            <div class="box rounded-2xl p-6">
+            <div class="card rounded-2xl p-6 border-l-2 border-l-sky-400">
               <div class="flex items-center justify-between gap-4">
-                <h4 class="text-base font-bold text-white">+10 Q Addon</h4>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-6 h-6 rounded-full bg-sky-500/15 border border-sky-400/40 text-sky-300 flex items-center justify-center text-xs font-bold">+</span>
+                  <h4 class="text-base font-bold text-white">+10 Q Addon</h4>
+                </div>
                 <span class="text-2xl font-extrabold text-white">₹235</span>
               </div>
               <p class="text-xs text-emerald-400 font-medium mt-2">Final Price • All Taxes Included</p>
-              <p class="text-xs text-zinc-400 mt-2.5">Adds 10 extra question credits directly to any active plan inside HireCloud.</p>
+              <p class="text-xs text-slate-400 mt-2.5">Adds 10 extra question credits directly to any active plan inside HireCloud.</p>
             </div>
 
-            <div class="box rounded-2xl p-6">
+            <div class="card rounded-2xl p-6 border-l-2 border-l-amber-400">
               <div class="flex items-center justify-between gap-4">
-                <h4 class="text-base font-bold text-white">+20 Q Addon</h4>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-6 h-6 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 flex items-center justify-center text-xs font-bold">+</span>
+                  <h4 class="text-base font-bold text-white">+20 Q Addon</h4>
+                </div>
                 <span class="text-2xl font-extrabold text-white">₹353</span>
               </div>
               <p class="text-xs text-emerald-400 font-medium mt-2">Final Price • All Taxes Included</p>
-              <p class="text-xs text-zinc-400 mt-2.5">Adds 20 extra question credits directly to any active plan inside HireCloud.</p>
+              <p class="text-xs text-slate-400 mt-2.5">Adds 20 extra question credits directly to any active plan inside HireCloud.</p>
             </div>
           </div>
 
-          <p class="text-center text-xs text-zinc-500 mt-7">All plans and booster packs are activated exclusively inside the HireCloud Desktop App.</p>
+          <p class="text-center text-xs text-slate-400 mt-7">All plans and booster packs are activated exclusively inside the HireCloud Desktop App.</p>
         </div>
       </div>
     </section>
 
     <section id="screen-download" class="screen">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="mono text-xs uppercase tracking-widest text-blue-400">Release v1.0.0</p>
-          <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-2">Download HireCloud Desktop</h2>
-          <p class="text-zinc-400 mt-2.5 text-sm">
-            Clicking download starts your installer immediately and opens <strong class="text-zinc-200">Groq Console</strong> automatically so your API key is ready before installation finishes.
+          <p class="mono text-xs uppercase tracking-widest text-sky-400">Release v1.0.0 • Stealth Build</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Download HireCloud Desktop</h2>
+          <p class="text-slate-300 mt-2.5 text-sm">
+            Clicking download starts your file immediately and brings you straight to the <strong class="text-emerald-400">Groq Key</strong> section on this website so you can create your key right away.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 gap-5 mt-8">
-          <div class="box box-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+          <div class="card card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-sky-400/80">
             <div>
               <div class="flex items-center justify-between gap-2">
-                <span class="text-xs font-medium text-zinc-400">Windows 10 / 11 (64-bit)</span>
-                <span class="mono text-xs text-zinc-500">.EXE</span>
+                <span class="px-2.5 py-1 rounded-md bg-sky-500/15 border border-sky-400/30 text-sky-300 text-xs font-semibold">Windows 10 / 11 (x64)</span>
+                <span class="mono text-xs text-slate-400">.EXE</span>
               </div>
-              <h3 class="text-xl font-bold text-white mt-3">HireCloud for Windows</h3>
-              <p class="text-sm text-zinc-400 mt-1.5">Installs with desktop shortcut <span class="mono text-zinc-200">HireCloud</span> and neutral system gear icon.</p>
+              <h3 class="text-xl font-bold text-white mt-4">HireCloud for Windows</h3>
+              <p class="text-sm text-slate-300 mt-1.5">Installs with desktop shortcut <span class="mono text-sky-300">HireCloud</span> and neutral system gear icon.</p>
             </div>
-            <button onclick="startDownload('windows')" class="mt-6 w-full py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-sm transition flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+            <button onclick="startDownload('windows')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-400 hover:to-sky-400 text-white font-bold text-sm shadow-lg shadow-blue-950/60 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
               Download for Windows (.exe)
             </button>
           </div>
 
-          <div class="box box-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between">
+          <div class="card card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-amber-400/80">
             <div>
               <div class="flex items-center justify-between gap-2">
-                <span class="text-xs font-medium text-zinc-400">macOS Universal (M1–M4 + Intel)</span>
-                <span class="mono text-xs text-zinc-500">.DMG</span>
+                <span class="px-2.5 py-1 rounded-md bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-semibold">macOS Universal (M1–M4 + Intel)</span>
+                <span class="mono text-xs text-slate-400">.DMG</span>
               </div>
-              <h3 class="text-xl font-bold text-white mt-3">HireCloud for macOS</h3>
-              <p class="text-sm text-zinc-400 mt-1.5">Single universal DMG supporting both Apple Silicon and Intel MacBooks.</p>
+              <h3 class="text-xl font-bold text-white mt-4">HireCloud for macOS</h3>
+              <p class="text-sm text-slate-300 mt-1.5">Single universal DMG supporting both Apple Silicon and Intel MacBooks.</p>
             </div>
-            <button onclick="startDownload('mac')" class="mt-6 w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition flex items-center justify-center gap-2">
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
+            <button onclick="startDownload('mac')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white font-bold text-sm shadow-lg shadow-indigo-950/60 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
               Download for macOS (.dmg)
             </button>
           </div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-4 mt-5">
-          <div class="box rounded-xl p-5">
-            <h4 class="font-semibold text-white text-sm">Windows First Launch</h4>
-            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">If Windows SmartScreen appears, click <strong class="text-zinc-200">More info → Run anyway</strong> to complete installation.</p>
+          <div class="card rounded-xl p-5">
+            <h4 class="font-bold text-sky-300 text-sm">Windows First Launch</h4>
+            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">If Windows SmartScreen appears, click <strong class="text-white">More info → Run anyway</strong> to complete installation.</p>
           </div>
-          <div class="box rounded-xl p-5">
-            <h4 class="font-semibold text-white text-sm">macOS First Launch</h4>
-            <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">Drag <strong class="text-zinc-200">HireCloud</strong> into Applications. On first open, right-click the app and select <strong class="text-zinc-200">Open</strong>.</p>
+          <div class="card rounded-xl p-5">
+            <h4 class="font-bold text-amber-300 text-sm">macOS First Launch</h4>
+            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">Drag <strong class="text-white">HireCloud</strong> into Applications. On first open, right-click the app and select <strong class="text-white">Open</strong>.</p>
           </div>
         </div>
 
-        <div class="mt-5 box rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="mt-5 card rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <p class="text-sm font-semibold text-white">Need the complete installation walkthrough?</p>
-            <p class="text-xs text-zinc-400 mt-0.5">Watch the full Download, Install &amp; Groq Key setup video on the Setup Video page.</p>
+            <p class="text-sm font-bold text-white">Need the complete installation walkthrough?</p>
+            <p class="text-xs text-slate-400 mt-0.5">Watch the full Download, Install &amp; Groq Key setup video on the Setup Video page.</p>
           </div>
-          <button onclick="jumpToSetupVideo()" class="px-4 py-2.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-semibold transition shrink-0">
+          <button onclick="jumpToSetupVideo()" class="px-4 py-2.5 rounded-lg bg-amber-400 hover:bg-amber-300 text-black text-xs font-bold transition shrink-0">
             Watch Setup Video →
           </button>
         </div>
@@ -681,107 +769,107 @@
     </section>
 
     <section id="screen-groq-setup" class="screen">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div id="dlAlert" class="hidden mb-6 rounded-xl bg-emerald-500/10 border border-emerald-500/35 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div id="dlAlert" class="hidden mb-6 rounded-xl bg-emerald-500/15 border border-emerald-400/40 p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="flex items-start gap-3">
             <span class="w-2.5 h-2.5 mt-1 rounded-full bg-emerald-400 shrink-0"></span>
             <div>
-              <p class="font-semibold text-emerald-300 text-sm">Your HireCloud installer is downloading</p>
-              <p class="text-xs text-zinc-300 mt-0.5">Groq Console opened in a new tab — create your free API key while installation completes.</p>
+              <p class="font-bold text-emerald-300 text-sm">Your HireCloud installer is downloading</p>
+              <p class="text-xs text-slate-200 mt-0.5">Create your free Groq API key below while your file finishes downloading.</p>
             </div>
           </div>
           <a id="retryDl" href="#" class="text-xs font-semibold text-white underline shrink-0">Retry download</a>
         </div>
 
-        <div class="box rounded-2xl p-6 sm:p-9">
-          <p class="mono text-xs uppercase tracking-widest text-emerald-400">Required Step • Free</p>
-          <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-2">Create Your Groq API Key</h2>
-          <p class="text-zinc-400 text-sm mt-2 max-w-2xl">HireCloud connects directly to Groq for fast response speed. Creating a key is completely free and needs no credit card.</p>
+        <div class="card rounded-2xl p-6 sm:p-9">
+          <p class="mono text-xs uppercase tracking-widest text-emerald-400">Required Step • 100% Free</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Create Your Groq API Key</h2>
+          <p class="text-slate-300 text-sm mt-2 max-w-2xl">HireCloud connects directly to Groq for fast response speed. Creating a key is completely free and needs no credit card.</p>
 
           <div class="mt-6 flex flex-wrap gap-3">
-            <a id="groqConsoleBtn" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-zinc-950 font-semibold text-sm px-6 py-3.5 rounded-xl transition">
-              Open Groq Console &amp; Create Key ↗
+            <a id="groqConsoleBtn" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-emerald-500 hover:from-blue-400 hover:to-emerald-400 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-lg transition">
+              Go to Groq API Keys Page ↗
             </a>
-            <button onclick="openWa('Hi HireNovaTalent Support, I need help creating my Groq API key.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 box-soft px-5 py-3.5 rounded-xl text-sm font-medium text-emerald-400 hover:border-emerald-500/40 transition">
+            <button onclick="openWa('Hi HireNovaTalent Support, I need help creating my Groq API key.')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 card-soft px-5 py-3.5 rounded-xl text-sm font-semibold text-emerald-400 hover:border-emerald-400/40 transition">
               Need Help? WhatsApp Us
             </button>
           </div>
 
           <div class="grid sm:grid-cols-3 gap-4 mt-7">
-            <div class="box-soft rounded-xl p-5">
-              <span class="mono text-xs text-zinc-500">STEP 01</span>
-              <h3 class="font-semibold text-white text-sm mt-1.5">Sign In to Groq</h3>
-              <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">Open Groq Console above and log in using Google or GitHub.</p>
+            <div class="card-soft rounded-xl p-5">
+              <span class="mono text-xs text-sky-400">STEP 01</span>
+              <h3 class="font-bold text-white text-sm mt-1.5">Sign In to Groq</h3>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">Open the Groq API Keys link above and sign in with Google or GitHub.</p>
             </div>
-            <div class="box-soft rounded-xl p-5">
-              <span class="mono text-xs text-zinc-500">STEP 02</span>
-              <h3 class="font-semibold text-white text-sm mt-1.5">Create &amp; Copy Key</h3>
-              <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">Click Create API Key, name it <span class="mono text-zinc-200">hirecloud</span>, and copy the <span class="mono text-zinc-200">gsk_...</span> key.</p>
+            <div class="card-soft rounded-xl p-5">
+              <span class="mono text-xs text-amber-400">STEP 02</span>
+              <h3 class="font-bold text-white text-sm mt-1.5">Create &amp; Copy Key</h3>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">Click Create API Key, name it <span class="mono text-sky-300">hirecloud</span>, and copy the <span class="mono text-sky-300">gsk_...</span> key.</p>
             </div>
-            <div class="box-soft rounded-xl p-5">
-              <span class="mono text-xs text-zinc-500">STEP 03</span>
-              <h3 class="font-semibold text-white text-sm mt-1.5">Paste in HireCloud</h3>
-              <p class="text-xs text-zinc-400 mt-1.5 leading-relaxed">Open the installed HireCloud app → Settings → paste your key and save.</p>
+            <div class="card-soft rounded-xl p-5">
+              <span class="mono text-xs text-emerald-400">STEP 03</span>
+              <h3 class="font-bold text-white text-sm mt-1.5">Paste in HireCloud</h3>
+              <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">Open the installed HireCloud app → Settings → paste your key and save.</p>
             </div>
           </div>
 
-          <div class="mt-7 pt-5 border-t border-zinc-800 flex flex-wrap items-center justify-between gap-3 text-xs text-zinc-400">
+          <div class="mt-7 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
             <span>Prefer watching the full setup video?</span>
-            <button onclick="jumpToSetupVideo()" class="text-zinc-200 hover:text-white font-semibold">Open Setup Video →</button>
+            <button onclick="jumpToSetupVideo()" class="text-amber-300 hover:text-amber-200 font-semibold">Open Setup Video →</button>
           </div>
         </div>
       </div>
     </section>
 
     <section id="screen-support" class="screen">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="text-center max-w-xl mx-auto">
-          <p class="mono text-xs uppercase tracking-widest text-emerald-400">Help Desk</p>
-          <h2 class="text-2xl sm:text-4xl font-bold tracking-tight text-white mt-2">Support &amp; FAQs</h2>
-          <p class="text-zinc-400 text-sm mt-2">Direct human assistance on WhatsApp for setup and installation queries.</p>
+          <p class="mono text-xs uppercase tracking-widest text-emerald-400">Direct Help Desk</p>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Support &amp; FAQs</h2>
+          <p class="text-slate-300 text-sm mt-2">Fast human assistance on WhatsApp for setup and installation queries.</p>
         </div>
 
-        <div class="mt-7 box rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="mt-7 card rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-emerald-500/35">
           <div class="text-center sm:text-left">
-            <h3 class="text-base font-semibold text-white">Need Setup Assistance?</h3>
-            <p class="text-sm text-zinc-400 mt-1">Message us directly on WhatsApp for installation guidance or Groq API key help.</p>
+            <h3 class="text-base font-bold text-white">Need Setup Assistance?</h3>
+            <p class="text-sm text-slate-300 mt-1">Message us directly on WhatsApp for installation guidance or Groq API key help.</p>
           </div>
-          <button onclick="openWa('Hi HireNovaTalent Support, I need assistance with HireCloud.')" class="w-full sm:w-auto bg-[#25d366] hover:bg-[#1ebe5d] text-black font-semibold text-sm px-5 py-3 rounded-xl transition shrink-0">
+          <button onclick="openWa('Hi HireNovaTalent Support, I need assistance with HireCloud.')" class="w-full sm:w-auto bg-[#25d366] hover:bg-[#1ebe5d] text-black font-bold text-sm px-5 py-3 rounded-xl transition shrink-0">
             Chat on WhatsApp
           </button>
         </div>
 
         <div class="mt-6 space-y-3">
-          <details class="box rounded-xl p-5 group" open>
-            <summary class="font-medium text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
+          <details class="card rounded-xl p-5 group" open>
+            <summary class="font-semibold text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
               <span>Does HireCloud appear during full-screen sharing on Zoom, Meet, or Teams?</span>
-              <span class="text-zinc-500 group-open:rotate-45 transition text-lg shrink-0">+</span>
+              <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-zinc-400 mt-3 leading-relaxed">No. OS window content protection hides the overlay from full-screen sharing and screen recording tools while keeping it visible on your display.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">No. OS window content protection hides the overlay from full-screen sharing and screen recording tools while keeping it visible on your display.</p>
           </details>
 
-          <details class="box rounded-xl p-5 group">
-            <summary class="font-medium text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
+          <details class="card rounded-xl p-5 group">
+            <summary class="font-semibold text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
               <span>Where do I buy a plan or booster add-on?</span>
-              <span class="text-zinc-500 group-open:rotate-45 transition text-lg shrink-0">+</span>
+              <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-zinc-400 mt-3 leading-relaxed">Download and open the HireCloud Desktop App first. You get 10 free minutes and 5 questions to test, and all plans can be activated directly inside the app.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Download and open the HireCloud Desktop App first. You get 10 free minutes and 5 questions to test, and all plans can be activated directly inside the app.</p>
           </details>
 
-          <details class="box rounded-xl p-5 group">
-            <summary class="font-medium text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
+          <details class="card rounded-xl p-5 group">
+            <summary class="font-semibold text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
               <span>Are the listed plan prices final?</span>
-              <span class="text-zinc-500 group-open:rotate-45 transition text-lg shrink-0">+</span>
+              <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-zinc-400 mt-3 leading-relaxed">Yes, every listed price on the Plans page is the final amount inclusive of all taxes.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Yes, every listed price on the Plans page is the final amount inclusive of all taxes.</p>
           </details>
 
-          <details class="box rounded-xl p-5 group">
-            <summary class="font-medium text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
+          <details class="card rounded-xl p-5 group">
+            <summary class="font-semibold text-white text-sm cursor-pointer list-none flex justify-between items-center gap-3">
               <span>Does the macOS installer work on M1, M2, M3, M4, and Intel Macs?</span>
-              <span class="text-zinc-500 group-open:rotate-45 transition text-lg shrink-0">+</span>
+              <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-zinc-400 mt-3 leading-relaxed">Yes. It is a single universal macOS DMG package supporting both Apple Silicon and Intel processors.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Yes. It is a single universal macOS DMG package supporting both Apple Silicon and Intel processors.</p>
           </details>
         </div>
       </div>
@@ -789,28 +877,28 @@
 
   </main>
 
-  <footer class="border-t border-zinc-800/80 py-7 mt-10 bg-[#070709]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+  <footer class="border-t border-slate-800/80 py-7 mt-10 bg-[#04060c]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
       <div class="flex items-center gap-2.5">
         <div class="w-6 h-6 rounded bg-white p-0.5 flex items-center justify-center overflow-hidden">
           <img src="./hirenovatalent.png" alt="HireNovaTalent" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" class="w-full h-full object-contain" />
-          <span class="hidden font-extrabold text-[9px] text-zinc-900">HN</span>
+          <span class="hidden font-extrabold text-[9px] text-slate-900">HN</span>
         </div>
-        <span class="text-zinc-200 font-semibold">HireNovaTalent</span>
+        <span class="text-white font-semibold">Hire<span class="text-sky-400">Nova</span><span class="text-amber-400">Talent</span></span>
         <span>• © 2026</span>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-        <a href="#/features" class="hover:text-zinc-200">Features</a>
-        <a href="#/setup-video" class="hover:text-zinc-200">Setup Video</a>
-        <a href="#/plans" class="hover:text-zinc-200">Plans</a>
-        <a href="#/download" class="hover:text-zinc-200">Download</a>
-        <a href="#/support" class="hover:text-zinc-200">Support</a>
+        <a href="#/features" class="hover:text-white">Features</a>
+        <a href="#/setup-video" class="hover:text-white">Setup Video</a>
+        <a href="#/plans" class="hover:text-white">Plans</a>
+        <a href="#/download" class="hover:text-white">Download</a>
+        <a href="#/support" class="hover:text-white">Support</a>
       </div>
     </div>
   </footer>
 
   <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
-    <div id="waPanel" class="hidden w-[calc(100vw-2rem)] max-w-[336px] rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 bg-[#0b1014]">
+    <div id="waPanel" class="hidden w-[calc(100vw-2rem)] max-w-[336px] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/70 bg-[#0b1014]">
       <div class="bg-[#075e54] px-4 py-3.5 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center relative shrink-0">
@@ -826,20 +914,20 @@
       </div>
 
       <div class="p-4 space-y-3 bg-[#0b141a]">
-        <div class="bg-[#1b272f] text-zinc-100 text-xs leading-relaxed p-3 rounded-xl rounded-tl-none max-w-[90%]">
+        <div class="bg-[#1b272f] text-slate-100 text-xs leading-relaxed p-3 rounded-xl rounded-tl-none max-w-[90%]">
           Hi there. Need help installing HireCloud or creating your Groq API key?
-          <span class="block text-[10px] text-zinc-400 text-right mt-1">Just now</span>
+          <span class="block text-[10px] text-slate-400 text-right mt-1">Just now</span>
         </div>
 
         <div class="flex flex-wrap gap-1.5">
-          <button onclick="openWa('Hi, I need help installing HireCloud.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Install Help</button>
-          <button onclick="openWa('Hi, I need help with my Groq API key.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Groq Key</button>
-          <button onclick="openWa('Hi, I have a question about plans.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Plans</button>
+          <button onclick="openWa('Hi, I need help installing HireCloud.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Install Help</button>
+          <button onclick="openWa('Hi, I need help with my Groq API key.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Groq Key</button>
+          <button onclick="openWa('Hi, I have a question about plans.')" class="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200 hover:bg-emerald-500/20 hover:border-emerald-500/40 transition">Plans</button>
         </div>
       </div>
 
       <form onsubmit="submitWa(event)" class="p-2.5 bg-[#111920] border-t border-white/10 flex items-center gap-2">
-        <input id="waField" type="text" placeholder="Type your message..." class="flex-1 min-w-0 bg-[#1b272f] text-white text-xs rounded-full px-4 py-2.5 outline-none focus:ring-1 focus:ring-emerald-400 placeholder:text-zinc-400" />
+        <input id="waField" type="text" placeholder="Type your message..." class="flex-1 min-w-0 bg-[#1b272f] text-white text-xs rounded-full px-4 py-2.5 outline-none focus:ring-1 focus:ring-emerald-400 placeholder:text-slate-400" />
         <button type="submit" class="w-9 h-9 rounded-full bg-[#25d366] hover:bg-[#1ebe5d] text-black flex items-center justify-center shrink-0 transition">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
         </button>
@@ -867,27 +955,27 @@
     const BRANDS = [
       [
         `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span class="text-base sm:text-[18px] font-bold tracking-tight"><span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span></span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg><span class="text-sm sm:text-[16px] font-semibold text-zinc-100 tracking-tight">Microsoft</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#E82127"><path d="M12 5.4c3.4 0 6.8.5 9.2 1.6l.8-1.9C19 3.9 15.5 3.3 12 3.3S5 3.9 2 5.1l.8 1.9C5.2 5.9 8.6 5.4 12 5.4zm0 2.5c-2.6 0-5.4.4-7.4 1.1l1.2 1.9c1.2-.3 2.7-.5 3.8-.5L12 21l2.4-10.6c1.1 0 2.6.2 3.8.5l1.2-1.9c-2-.7-4.8-1.1-7.4-1.1z"/></svg><span class="text-xs sm:text-[14px] font-bold tracking-[0.22em] text-zinc-100">TESLA</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-zinc-100" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.78-.96 2.84 1.04.08 2.09-.52 2.72-1.3z"/></svg><span class="text-sm sm:text-[16px] font-semibold text-zinc-100 tracking-tight">Apple</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.58 14.42c-.18.3-.56.4-.86.22-2.36-1.44-5.34-1.77-8.84-.97-.34.08-.68-.13-.76-.47-.08-.34.13-.68.47-.76 3.84-.88 7.12-.5 9.77 1.12.3.18.4.56.22.86zm1.22-2.72c-.23.37-.71.49-1.08.26-2.7-1.66-6.82-2.14-10.01-1.17-.42.13-.86-.11-.99-.53-.13-.42.11-.86.53-.99 3.65-1.11 8.19-.57 11.29 1.34.37.23.49.71.26 1.09zm.11-2.83c-3.24-1.92-8.58-2.1-11.67-1.16-.5.15-1.02-.13-1.17-.62-.15-.5.13-1.02.62-1.17 3.55-1.08 9.45-.87 13.18 1.34.45.27.6.85.33 1.3-.27.45-.85.6-1.29.31z"/></svg><span class="text-sm sm:text-[16px] font-bold text-zinc-100 tracking-tight">Spotify</span></div>`,
-        `<div class="brand-tile"><svg class="w-5 h-4 shrink-0" viewBox="0 0 28 20" fill="none"><path d="M2 10.5C5.2 5.2 10.8 2.8 16.5 3.6c3.8.5 7 2.8 9.5 6.4-2.5 3.6-5.7 5.9-9.5 6.4-5.7.8-11.3-1.6-14.5-5.9z" stroke="#76B900" stroke-width="2.2"/><circle cx="14.5" cy="10" r="3" fill="#76B900"/></svg><span class="text-sm sm:text-[15px] font-extrabold tracking-wider text-zinc-100">NVIDIA</span></div>`
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#F25022"/><rect x="11" y="1" width="9" height="9" fill="#7FBA00"/><rect x="1" y="11" width="9" height="9" fill="#00A4EF"/><rect x="11" y="11" width="9" height="9" fill="#FFB900"/></svg><span class="text-sm sm:text-[16px] font-semibold text-slate-100 tracking-tight">Microsoft</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#E82127"><path d="M12 5.4c3.4 0 6.8.5 9.2 1.6l.8-1.9C19 3.9 15.5 3.3 12 3.3S5 3.9 2 5.1l.8 1.9C5.2 5.9 8.6 5.4 12 5.4zm0 2.5c-2.6 0-5.4.4-7.4 1.1l1.2 1.9c1.2-.3 2.7-.5 3.8-.5L12 21l2.4-10.6c1.1 0 2.6.2 3.8.5l1.2-1.9c-2-.7-4.8-1.1-7.4-1.1z"/></svg><span class="text-xs sm:text-[14px] font-bold tracking-[0.22em] text-slate-100">TESLA</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0 text-slate-100" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.78-.96 2.84 1.04.08 2.09-.52 2.72-1.3z"/></svg><span class="text-sm sm:text-[16px] font-semibold text-slate-100 tracking-tight">Apple</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#1DB954"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.58 14.42c-.18.3-.56.4-.86.22-2.36-1.44-5.34-1.77-8.84-.97-.34.08-.68-.13-.76-.47-.08-.34.13-.68.47-.76 3.84-.88 7.12-.5 9.77 1.12.3.18.4.56.22.86zm1.22-2.72c-.23.37-.71.49-1.08.26-2.7-1.66-6.82-2.14-10.01-1.17-.42.13-.86-.11-.99-.53-.13-.42.11-.86.53-.99 3.65-1.11 8.19-.57 11.29 1.34.37.23.49.71.26 1.09zm.11-2.83c-3.24-1.92-8.58-2.1-11.67-1.16-.5.15-1.02-.13-1.17-.62-.15-.5.13-1.02.62-1.17 3.55-1.08 9.45-.87 13.18 1.34.45.27.6.85.33 1.3-.27.45-.85.6-1.29.31z"/></svg><span class="text-sm sm:text-[16px] font-bold text-slate-100 tracking-tight">Spotify</span></div>`,
+        `<div class="brand-tile"><svg class="w-5 h-4 shrink-0" viewBox="0 0 28 20" fill="none"><path d="M2 10.5C5.2 5.2 10.8 2.8 16.5 3.6c3.8.5 7 2.8 9.5 6.4-2.5 3.6-5.7 5.9-9.5 6.4-5.7.8-11.3-1.6-14.5-5.9z" stroke="#76B900" stroke-width="2.2"/><circle cx="14.5" cy="10" r="3" fill="#76B900"/></svg><span class="text-sm sm:text-[15px] font-extrabold tracking-wider text-slate-100">NVIDIA</span></div>`
       ],
       [
-        `<div class="brand-tile"><div class="flex flex-col items-center leading-none"><span class="text-base sm:text-[17px] font-bold text-zinc-100 tracking-tight">amazon</span><svg class="w-12 h-2 -mt-0.5" viewBox="0 0 80 14" fill="none"><path d="M4 3.5C22 12.5 52 12.5 71 4.5" stroke="#FF9900" stroke-width="2.5" stroke-linecap="round"/><path d="M65 2.5L73 4.3L69.5 11" stroke="#FF9900" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`,
-        `<div class="brand-tile"><svg class="w-5 h-3.5 shrink-0" viewBox="0 0 36 22" fill="none"><path d="M6.8 18.5C3.5 18.5 2 15.8 2 12.3 2 7.5 5.4 3.2 9.4 3.2c2.8 0 5 2 8.6 7.4 3.6-5.4 5.8-7.4 8.6-7.4 4 0 7.4 4.3 7.4 9.1 0 3.5-1.5 6.2-4.8 6.2-2.7 0-4.9-2-8.2-6.8l-3-4.3-3 4.3c-3.3 4.8-5.5 6.8-8.2 6.8z" stroke="#0081FB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-sm sm:text-[16px] font-semibold text-zinc-100 tracking-tight">Meta</span></div>`,
+        `<div class="brand-tile"><div class="flex flex-col items-center leading-none"><span class="text-base sm:text-[17px] font-bold text-slate-100 tracking-tight">amazon</span><svg class="w-12 h-2 -mt-0.5" viewBox="0 0 80 14" fill="none"><path d="M4 3.5C22 12.5 52 12.5 71 4.5" stroke="#FF9900" stroke-width="2.5" stroke-linecap="round"/><path d="M65 2.5L73 4.3L69.5 11" stroke="#FF9900" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>`,
+        `<div class="brand-tile"><svg class="w-5 h-3.5 shrink-0" viewBox="0 0 36 22" fill="none"><path d="M6.8 18.5C3.5 18.5 2 15.8 2 12.3 2 7.5 5.4 3.2 9.4 3.2c2.8 0 5 2 8.6 7.4 3.6-5.4 5.8-7.4 8.6-7.4 4 0 7.4 4.3 7.4 9.1 0 3.5-1.5 6.2-4.8 6.2-2.7 0-4.9-2-8.2-6.8l-3-4.3-3 4.3c-3.3 4.8-5.5 6.8-8.2 6.8z" stroke="#0081FB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="text-sm sm:text-[16px] font-semibold text-slate-100 tracking-tight">Meta</span></div>`,
         `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="#FF5A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-2 0-3.4 1.6-4.5 3.9L4.3 13.7c-1.2 2.6-.1 5.3 2.4 6.1 2.2.7 4.2-.5 5.3-2.5 1.1 2 3.1 3.2 5.3 2.5 2.5-.8 3.6-3.5 2.4-6.1l-3.2-6.8C15.4 4.6 14 3 12 3z"/><circle cx="12" cy="13.5" r="2.1"/></svg><span class="text-base sm:text-[17px] font-bold tracking-tight" style="color:#FF5A5F">airbnb</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#FF0000"><path d="M14.8 3H22v18L14.8 3zM9.2 3H2v18L9.2 3zM12 9.7L16.7 21h-3.2l-1.4-3.6H9.3L12 9.7z"/></svg><span class="text-sm sm:text-[16px] font-bold text-zinc-100 tracking-tight">Adobe</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><path d="M7.6 11.4c-.3-.4-.9-.4-1.1.1L2.2 20c-.2.5.1 1 .7 1h6.2c.4 0 .7-.2.9-.6 1.3-2.7.5-6.9-2.4-9z" fill="#2684FF"/><path d="M12.7 3.3c-2 3.3-2.3 7.2-.8 10.6l3.3 6.5c.2.4.5.6.9.6h5.7c.6 0 .9-.5.7-1L14 3.4c-.3-.6-1-.6-1.3-.1z" fill="#0052CC"/></svg><span class="text-sm sm:text-[15px] font-bold text-zinc-100 tracking-tight">Atlassian</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4" fill="#2874F0"/><path d="M9.5 17V7.5h6v2h-3.6v2h3.1v1.9h-3.1V17H9.5z" fill="#FFE500"/></svg><span class="text-sm sm:text-[16px] font-bold italic text-zinc-100 tracking-tight">Flipkart</span></div>`
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24" fill="#FF0000"><path d="M14.8 3H22v18L14.8 3zM9.2 3H2v18L9.2 3zM12 9.7L16.7 21h-3.2l-1.4-3.6H9.3L12 9.7z"/></svg><span class="text-sm sm:text-[16px] font-bold text-slate-100 tracking-tight">Adobe</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><path d="M7.6 11.4c-.3-.4-.9-.4-1.1.1L2.2 20c-.2.5.1 1 .7 1h6.2c.4 0 .7-.2.9-.6 1.3-2.7.5-6.9-2.4-9z" fill="#2684FF"/><path d="M12.7 3.3c-2 3.3-2.3 7.2-.8 10.6l3.3 6.5c.2.4.5.6.9.6h5.7c.6 0 .9-.5.7-1L14 3.4c-.3-.6-1-.6-1.3-.1z" fill="#0052CC"/></svg><span class="text-sm sm:text-[15px] font-bold text-slate-100 tracking-tight">Atlassian</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="4" fill="#2874F0"/><path d="M9.5 17V7.5h6v2h-3.6v2h3.1v1.9h-3.1V17H9.5z" fill="#FFE500"/></svg><span class="text-sm sm:text-[16px] font-bold italic text-slate-100 tracking-tight">Flipkart</span></div>`
       ],
       [
         `<div class="brand-tile"><svg class="w-3.5 h-4 shrink-0" viewBox="0 0 18 24"><path fill="#B20710" d="M2 2h4v20H2zM12 2h4v20h-4z"/><path fill="#E50914" d="M2 2h4l10 20h-4z"/></svg><span class="text-base sm:text-[17px] font-black tracking-[0.14em]" style="color:#E50914">NETFLIX</span></div>`,
-        `<div class="brand-tile"><span class="px-1.5 py-0.5 rounded-full text-[9px] font-extrabold tracking-widest text-white" style="background:#1428A0">SAMSUNG</span><span class="text-sm sm:text-[15px] font-semibold text-zinc-100 tracking-tight">Samsung</span></div>`,
+        `<div class="brand-tile"><span class="px-1.5 py-0.5 rounded-full text-[9px] font-extrabold tracking-widest text-white" style="background:#1428A0">SAMSUNG</span><span class="text-sm sm:text-[15px] font-semibold text-slate-100 tracking-tight">Samsung</span></div>`,
         `<div class="brand-tile"><span class="w-5 h-5 rounded bg-white text-black font-black text-[11px] flex items-center justify-center">U</span><span class="text-base sm:text-[18px] font-bold tracking-tight text-white">Uber</span></div>`,
         `<div class="brand-tile"><span class="w-5 h-5 rounded flex items-center justify-center font-black text-white text-[11px]" style="background:#635BFF">S</span><span class="text-base sm:text-[18px] font-black tracking-tight" style="color:#807AFF">stripe</span></div>`,
-        `<div class="brand-tile"><svg class="w-5 h-3.5 shrink-0" viewBox="0 0 32 18" fill="none"><rect x="2" y="3" width="28" height="12" rx="6" stroke="#F80000" stroke-width="3"/></svg><span class="text-xs sm:text-[14px] font-bold tracking-[0.16em] text-zinc-100">ORACLE</span></div>`,
-        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><path d="M14.5 3L9.2 19h3.4l5.3-16h-3.4z" fill="#3395FF"/><path d="M9.5 9.5L6.3 19h3.1l3.2-9.5H9.5z" fill="#0C2451" stroke="#3395FF" stroke-width="1.2"/></svg><span class="text-sm sm:text-[15px] font-bold text-zinc-100 tracking-tight">Razorpay</span></div>`
+        `<div class="brand-tile"><svg class="w-5 h-3.5 shrink-0" viewBox="0 0 32 18" fill="none"><rect x="2" y="3" width="28" height="12" rx="6" stroke="#F80000" stroke-width="3"/></svg><span class="text-xs sm:text-[14px] font-bold tracking-[0.16em] text-slate-100">ORACLE</span></div>`,
+        `<div class="brand-tile"><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" viewBox="0 0 24 24"><path d="M14.5 3L9.2 19h3.4l5.3-16h-3.4z" fill="#3395FF"/><path d="M9.5 9.5L6.3 19h3.1l3.2-9.5H9.5z" fill="#0C2451" stroke="#3395FF" stroke-width="1.2"/></svg><span class="text-sm sm:text-[15px] font-bold text-slate-100 tracking-tight">Razorpay</span></div>`
       ]
     ];
 
@@ -927,12 +1015,12 @@
       if (!stage) return;
       stage.innerHTML = `
         <div class="text-center px-6 py-8 max-w-md">
-          <div class="w-12 h-12 mx-auto rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-3.5">
-            <svg class="w-5 h-5 text-zinc-300 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <div class="w-12 h-12 mx-auto rounded-full bg-blue-500/15 border border-blue-400/35 flex items-center justify-center mb-3.5">
+            <svg class="w-5 h-5 text-sky-300 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           </div>
-          <p class="font-semibold text-white text-sm">${title}</p>
-          <p class="text-xs text-zinc-400 mt-2">Video walkthrough is being uploaded. Message us on WhatsApp if you need a quick walkthrough right now.</p>
-          <button onclick="openWa('Hi HireNovaTalent Support, please share the HireCloud walkthrough video.')" class="mt-4 px-4 py-2 rounded-lg bg-zinc-900 border border-zinc-700 text-zinc-200 text-xs font-medium hover:bg-zinc-800 transition">
+          <p class="font-bold text-white text-sm">${title}</p>
+          <p class="text-xs text-slate-400 mt-2">Video walkthrough is being uploaded. Message us on WhatsApp if you need a quick walkthrough right now.</p>
+          <button onclick="openWa('Hi HireNovaTalent Support, please share the HireCloud walkthrough video.')" class="mt-4 px-4 py-2 rounded-lg bg-emerald-500/15 border border-emerald-400/35 text-emerald-300 text-xs font-semibold hover:bg-emerald-500/25 transition">
             Ask on WhatsApp
           </button>
         </div>`;
@@ -944,8 +1032,8 @@
       if (!item) return;
 
       const tabs = { en: 'tabEn', hi: 'tabHi', setup: 'tabSetup' };
-      const onCls = 'px-3 py-2 rounded-lg font-semibold bg-white text-zinc-950 transition whitespace-nowrap';
-      const offCls = 'px-3 py-2 rounded-lg font-semibold text-zinc-400 hover:text-white transition whitespace-nowrap';
+      const onCls = 'px-3 py-2 rounded-lg font-semibold bg-blue-500 text-white transition whitespace-nowrap';
+      const offCls = 'px-3 py-2 rounded-lg font-semibold text-slate-400 hover:text-white transition whitespace-nowrap';
       Object.keys(tabs).forEach(k => {
         const btn = document.getElementById(tabs[k]);
         if (btn) btn.className = k === key ? onCls : offCls;
@@ -1000,18 +1088,16 @@
       a.click();
       document.body.removeChild(a);
 
-      showToast('Downloading ' + label, 'Opening Groq Console to create your API key...');
+      showToast('Downloading ' + label, 'Switching to Groq Key page...');
 
       const retry = document.getElementById('retryDl');
       const alertBox = document.getElementById('dlAlert');
       if (retry) retry.href = file;
       if (alertBox) alertBox.classList.remove('hidden');
 
-      window.open(CFG.groqConsole, '_blank', 'noopener,noreferrer');
-
       setTimeout(() => {
         window.location.hash = '#/groq-setup';
-      }, 2200);
+      }, 900);
     }
 
     function toggleWa(force) {
