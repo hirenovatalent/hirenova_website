@@ -696,10 +696,10 @@
               <h3 class="text-xl font-bold text-white mt-4">HireCloud for Windows</h3>
               <p class="text-sm text-slate-300 mt-1.5">Installs with desktop shortcut <span class="mono text-sky-300">HireCloud</span> and neutral system gear icon.</p>
             </div>
-            <button onclick="startDownload('windows')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-400 hover:to-sky-400 text-white font-bold text-sm shadow-lg shadow-blue-950/60 transition flex items-center justify-center gap-2">
+            <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" onclick="startDownload('windows')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-400 hover:to-sky-400 text-white font-bold text-sm shadow-lg shadow-blue-950/60 transition flex items-center justify-center gap-2">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
               Download for Windows (.exe)
-            </button>
+            </a>
           </div>
 
           <div class="card card-hover rounded-2xl p-6 sm:p-7 flex flex-col justify-between border-t-2 border-t-amber-400/80">
@@ -711,10 +711,10 @@
               <h3 class="text-xl font-bold text-white mt-4">HireCloud for macOS</h3>
               <p class="text-sm text-slate-300 mt-1.5">Single universal DMG supporting both Apple Silicon and Intel MacBooks.</p>
             </div>
-            <button onclick="startDownload('mac')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white font-bold text-sm shadow-lg shadow-indigo-950/60 transition flex items-center justify-center gap-2">
+            <a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer" onclick="startDownload('mac')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-500 hover:from-indigo-400 hover:to-violet-400 text-white font-bold text-sm shadow-lg shadow-indigo-950/60 transition flex items-center justify-center gap-2">
               <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3"/></svg>
               Download for macOS (.dmg)
-            </button>
+            </a>
           </div>
         </div>
 
@@ -1001,15 +1001,10 @@
       const file = os === 'windows' ? CFG.winExe : CFG.macDmg;
       const label = os === 'windows' ? 'Windows (.exe)' : 'macOS Universal (.dmg)';
 
-      const a = document.createElement('a');
-      a.href = file;
-      a.setAttribute('download', '');
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-
-      showToast('Downloading ' + label, 'Opening setup console in a new tab...');
-      window.open(CFG.consoleUrl, '_blank', 'noopener,noreferrer');
+      showToast('Downloading ' + label, 'Your installer download has started.');
+      setTimeout(() => {
+        window.location.href = file;
+      }, 300);
     }
 
     function toggleWa(force) {
