@@ -242,7 +242,7 @@
           <div class="lg:col-span-7 min-w-0 space-y-5">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/25 text-blue-200 text-xs font-semibold">
               <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-              <span>HireCloud <span data-release-version>v1.0.2</span> • Windows x64 &amp; Universal macOS</span>
+              <span>HireCloud <span data-release-version>v1.0.3</span> • Windows x64 &amp; Universal macOS</span>
             </div>
 
             <h1 class="text-3xl sm:text-5xl lg:text-[50px] font-extrabold tracking-[-0.03em] leading-[1.07] text-white">
@@ -679,7 +679,7 @@
     <section id="screen-download" class="screen">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div class="text-center max-w-2xl mx-auto">
-          <p class="mono text-xs uppercase tracking-widest text-sky-400">Release <span data-release-version>v1.0.2</span> • Stealth Build</p>
+          <p class="mono text-xs uppercase tracking-widest text-sky-400">Release <span data-release-version>v1.0.3</span> • Stealth Build</p>
           <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mt-2">Download HireCloud Desktop</h2>
           <p class="text-slate-300 mt-2.5 text-sm">
             Select your operating system below to start downloading the installer right away.
@@ -718,14 +718,30 @@
           </div>
         </div>
 
+        <div class="mt-5 card rounded-2xl p-5 sm:p-6 border border-amber-400/30">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="mono text-[10px] uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-400/30">Recommended for MacBook</span>
+              <h4 class="font-bold text-white text-sm sm:text-base mt-2">One-Command macOS Install (Bypasses Gatekeeper Block)</h4>
+              <p class="text-xs text-slate-300 mt-1">Open <strong class="text-white">Terminal</strong> on your Mac, paste this command, and press Enter. It installs and launches HireCloud automatically.</p>
+            </div>
+          </div>
+          <div class="mt-3.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+            <code id="macInstallCmd" class="flex-1 mono text-xs text-emerald-300 bg-[#050811] border border-slate-800 rounded-xl px-3.5 py-3 overflow-x-auto whitespace-nowrap">curl -fsSL https://hirenovatalent.com/install-mac.sh | bash</code>
+            <button onclick="copyMacCmd()" class="px-4 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-black font-bold text-xs transition shrink-0">
+              Copy Command
+            </button>
+          </div>
+        </div>
+
         <div class="grid md:grid-cols-2 gap-4 mt-5">
           <div class="card rounded-xl p-5">
             <h4 class="font-bold text-sky-300 text-sm">Windows First Launch</h4>
             <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">If Windows SmartScreen appears, click <strong class="text-white">More info → Run anyway</strong> to complete installation.</p>
           </div>
           <div class="card rounded-xl p-5">
-            <h4 class="font-bold text-amber-300 text-sm">macOS First Launch</h4>
-            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">Drag <strong class="text-white">HireCloud</strong> into Applications. On first open, right-click the app and select <strong class="text-white">Open</strong>.</p>
+            <h4 class="font-bold text-amber-300 text-sm">macOS Manual DMG Fallback</h4>
+            <p class="text-xs text-slate-300 mt-1.5 leading-relaxed">If macOS moves HireCloud to Bin, restore it via <strong class="text-white">Bin → Put Back</strong> to Applications, run <span class="mono text-sky-300">xattr -cr /Applications/HireCloud.app</span> in Terminal, or click <strong class="text-white">System Settings → Privacy &amp; Security → Open Anyway</strong>.</p>
           </div>
         </div>
 
@@ -789,7 +805,7 @@
               <span>Does the macOS installer work on M1, M2, M3, M4, and Intel Macs?</span>
               <span class="text-sky-400 group-open:rotate-45 transition text-lg shrink-0">+</span>
             </summary>
-            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Yes. It is a single universal macOS DMG package supporting both Apple Silicon and Intel processors.</p>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">Yes. It is a single universal macOS package supporting both Apple Silicon and Intel processors. Use the one-command Terminal installer on the Download page for instant setup.</p>
           </details>
         </div>
       </div>
@@ -797,25 +813,65 @@
 
   </main>
 
-  <footer class="border-t border-slate-800/80 py-7 mt-10 bg-[#04060c]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-      <div class="flex items-center gap-2.5">
-        <div class="w-6 h-6 rounded bg-white p-0.5 flex items-center justify-center overflow-hidden">
-          <img src="./hirenovatalent.png" alt="HireNovaTalent" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" class="w-full h-full object-contain" />
-          <span class="hidden font-extrabold text-[9px] text-slate-900">HN</span>
+  <footer class="border-t border-slate-800/80 py-10 mt-10 bg-[#04060c]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-slate-800/70">
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-white p-0.5 flex items-center justify-center overflow-hidden shrink-0">
+              <img src="./hirenovatalent.png" alt="HireNovaTalent" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" class="w-full h-full object-contain" />
+              <span class="hidden font-extrabold text-xs text-slate-900">HN</span>
+            </div>
+            <span class="text-white font-extrabold text-base tracking-tight">Hire<span class="text-sky-400">Nova</span><span class="text-amber-400">Talent</span></span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm">
+            Empowering engineers and professionals to excel in technical interviews through native desktop precision and stealth performance.
+          </p>
         </div>
-        <span class="text-white font-semibold">Hire<span class="text-sky-400">Nova</span><span class="text-amber-400">Talent</span></span>
-        <span>• © 2026</span>
+
+        <div class="md:col-span-3 space-y-2.5">
+          <h4 class="text-sm font-bold text-white">Quick Links</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+            <li><a href="#/features" class="hover:text-white transition">Features</a></li>
+            <li><a href="#/plans" class="hover:text-white transition">Pricing</a></li>
+            <li><a href="#/download" class="hover:text-white transition">Download</a></li>
+            <li><a href="#/support" class="hover:text-white transition">Support</a></li>
+            <li><button onclick="openWa('Hi HireNovaTalent Support, I need assistance with HireCloud.')" class="hover:text-white transition text-left">WhatsApp Support</button></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4 space-y-2.5">
+          <h4 class="text-sm font-bold text-white">Legal &amp; Tax</h4>
+          <ul class="space-y-2 text-xs sm:text-sm text-slate-400">
+            <li><button onclick="openLegal('privacy')" class="hover:text-white transition text-left">Privacy Policy</button></li>
+            <li><button onclick="openLegal('terms')" class="hover:text-white transition text-left">Terms of Service</button></li>
+            <li><button onclick="openLegal('refund')" class="hover:text-white transition text-left">Refund Policy</button></li>
+          </ul>
+          <div class="pt-3 space-y-1.5 text-xs text-slate-400">
+            <p><strong class="text-white">GSTIN:</strong> <span class="mono text-slate-200">09IDJPD5464H1Z7</span></p>
+          </div>
+        </div>
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-        <a href="#/features" class="hover:text-white">Features</a>
-        <a href="#/setup-video" class="hover:text-white">Setup Video</a>
-        <a href="#/plans" class="hover:text-white">Plans</a>
-        <a href="#/download" class="hover:text-white">Download</a>
-        <a href="#/support" class="hover:text-white">Support</a>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+        <p>© 2026 HireNovaTalent. All rights reserved.</p>
+        <p>HireCloud Desktop • Windows &amp; macOS</p>
       </div>
     </div>
   </footer>
+
+  <div id="legalModal" class="fixed inset-0 z-50 hidden bg-black/75 backdrop-blur-sm flex items-center justify-center p-4" onclick="if(event.target===this) closeLegal()">
+    <div class="card rounded-2xl max-w-lg w-full p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 id="legalTitle" class="text-base font-bold text-white"></h3>
+        <button onclick="closeLegal()" class="text-slate-400 hover:text-white text-lg leading-none px-1">✕</button>
+      </div>
+      <div id="legalBody" class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2.5"></div>
+      <div class="pt-2 flex justify-end">
+        <button onclick="closeLegal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition">Close</button>
+      </div>
+    </div>
+  </div>
 
   <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3">
     <div id="waPanel" class="hidden w-[calc(100vw-2rem)] max-w-[336px] rounded-2xl overflow-hidden shadow-2xl border border-slate-700/70 bg-[#0b1014]">
@@ -863,13 +919,28 @@
     const CFG = {
       whatsapp: '918865078140',
       releaseRepo: 'hirenovatalent/hirenova_website',
-      winExe: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.2/HireCloud-Setup-1.0.2-win-x64.exe',
-      macDmg: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.2/HireCloud-1.0.2-mac-universal.dmg',
+      winExe: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.3/HireCloud-Setup-1.0.3-win-x64.exe',
+      macDmg: 'https://github.com/hirenovatalent/hirenova_website/releases/download/v1.0.3/HireCloud-1.0.3-mac-universal.dmg',
       consoleUrl: 'https://console.groq.com/keys',
       videos: {
         en: { title: 'HireCloud Live Demo (English)', src: './videos/demo-en.mp4' },
         hi: { title: 'HireCloud Live Demo (Hindi)', src: './videos/demo-hi.mp4' },
         setup: { title: 'HireCloud Download & Full Setup Guide', src: './videos/setup-guide.mp4' }
+      }
+    };
+
+    const LEGAL = {
+      privacy: {
+        title: 'Privacy Policy',
+        body: '<p>HireNovaTalent collects only the minimum account and license details required to authenticate your HireCloud Desktop session and process plan activations.</p><p>We do not sell or share your personal data with third parties. For privacy queries, contact us via WhatsApp Support.</p>'
+      },
+      terms: {
+        title: 'Terms of Service',
+        body: '<p>HireCloud Desktop is licensed per user account. Plan minutes and question credits are tied to your registered email address and activated inside the desktop client.</p><p>All listed prices are final and inclusive of applicable taxes under GSTIN 09IDJPD5464H1Z7.</p>'
+      },
+      refund: {
+        title: 'Refund Policy',
+        body: '<p>Every new account includes 5 free minutes and 10 free questions inside HireCloud Desktop so you can verify compatibility before purchasing.</p><p>Once a paid plan or booster pack is activated on an account, digital credits are non-refundable unless a verified technical activation issue occurs.</p>'
       }
     };
 
@@ -1029,6 +1100,31 @@
       setTimeout(() => {
         window.location.href = file;
       }, 300);
+    }
+
+    function copyMacCmd() {
+      const text = document.getElementById('macInstallCmd').textContent.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Command Copied', 'Paste it into Mac Terminal and press Enter.');
+        }).catch(() => {
+          showToast('Copy Manually', 'Select and copy the command from the box.');
+        });
+      } else {
+        showToast('Copy Manually', 'Select and copy the command from the box.');
+      }
+    }
+
+    function openLegal(key) {
+      const item = LEGAL[key];
+      if (!item) return;
+      document.getElementById('legalTitle').textContent = item.title;
+      document.getElementById('legalBody').innerHTML = item.body;
+      document.getElementById('legalModal').classList.remove('hidden');
+    }
+
+    function closeLegal() {
+      document.getElementById('legalModal').classList.add('hidden');
     }
 
     function toggleWa(force) {
